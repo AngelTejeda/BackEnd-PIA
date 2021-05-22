@@ -1,16 +1,16 @@
 # Product 🛒
-El Controlador Employee se permite a un usuario autenticado interactuar con la table Employees de la Base de Datos Northwind.
+El Controlador Product se permite a un usuario autenticado interactuar con la table Product de la Base de Datos Northwind.
 
 ## ✔ Get One Employee
 
-**Descripción**: Devuelve un JSON con la información del empleado solicitado.
+**Descripción**: Devuelve un JSON con la información del producto solicitado.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Product/{id}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del producto solicitado. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -20,22 +20,22 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 {
 	"id": number,
 	"name": string,
-	"familyName": string,
-	"homeAddres": string
+	"isDiscontinued": bool,
+	"price": decimal?
 }
 ```
 
 **Prueba**:
 
-![Get One Employee Postman](./pictures/Employee/get_one_employee.png)
+![Get One Product Postman](./pictures/Product/get_one_product.png)
 
 ***
 
-## ✔ Add Employee
+## ✔ Add Product
 
-**Descripción**: Agrega un registro de la tabla Employees con la información especificada en el Body. Devuelve un JSON con el ID registrado para el empleado.
+**Descripción**: Agrega un registro de la tabla Product con la información especificada en el Body. Devuelve un JSON con el ID registrado para el product.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Product/{id}
 
 **Método  HTTP**: POST
 
@@ -47,22 +47,22 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 {
 	"name": string,
       /*
-      - Nombre del empleado.
-      - String de 10 caracteres máximo.
+      - Nombre del producto.
+      - String de 40 caracteres máximo.
       - Obligatorio.
       */
 
-	"familyName": string,
+	"isDiscontinued": bool,
       /*
-      - Apellido del empleado.
-      - String de 20 caracteres máximo.
+      - Status del producto.
+      - Boleano.
       - Obligatorio.
       */
 
-	"homeAddres": string
+	"price": decimal?
       /*
-      - Dirección del empleado.
-      - String de 60 caracteres máximo.
+      - Precio del producto.
+      - Decimal positivo.
       - Opcional.
       */
 }
@@ -78,20 +78,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Add Employee Postman](./pictures/Employee/add_employee.png)
+![Add Product Postman](./pictures/Product/add_product.png)
 
 ***
 
-## ✔ Update Employee
+## ✔ Update Product
 
-**Descripción**: Modifica un registro de la tabla Employees con la información especificada en el Body.
+**Descripción**: Modifica un registro de la tabla Product con la información especificada en el Body.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Product/{id}
 
 **Método  HTTP**: PUT
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del producto solicitado. Número entero positivo.
 
 **Parámetros del Body**:
 
@@ -99,22 +99,22 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 {
 	"name": string,
       /*
-      - Nombre del empleado.
-      - 10 caracteres máximo.
+      - Nombre del producto.
+      - String de 40 caracteres máximo.
       - Obligatorio.
       */
 
-	"familyName": string,
+	"isDiscontinued": bool,
       /*
-      - Apellido del empleado.
-      - 20 caracteres máximo.
+      - Status del producto.
+      - Boleano.
       - Obligatorio.
       */
 
-	"homeAddres": string
+	"price": decimal?
       /*
-      - Dirección del empleado.
-      - 60 caracteres máximo.
+      - Precio del producto.
+      - Decimal positivo.
       - Opcional.
       */
 }
@@ -124,20 +124,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Update Employee Postman](./pictures/Employee/update_employee.png)
+![Update Product Postman](./pictures/Product/update_product.png)
 
 ***
 
-## ✔ Delete Employee
+## ✔ Delete Product
 
-**Descripción**: Elimina el registro del empleado especificado.
+**Descripción**: Elimina el registro del producto especificado.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Product/{id}
 
 **Método  HTTP**: DELETE
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del product solicitado. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -145,20 +145,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Delete Employee Postman](./pictures/Employee/delete_employee.png)
+![Delete Product Postman](./pictures/Product/delete_product.png)
 
 ***
 
 ## ✔ Get Page
 
-**Descripción**: Devuelve un JSON con 10 registros de la tabla de empleados. Los registros que se muestren dependerán de la página solicitada.
+**Descripción**: Devuelve un JSON con 10 registros de la tabla de productos. Los registros que se muestren dependerán de la página solicitada.
 
-**URL**: /api/Employee/pages/{requestedPage}
+**URL**: /api/Product/pages/{requestedPage}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **requestedPage**: Número de la página que se desea obtener de la tabla de empleados. Número entero positivo.
+* **requestedPage**: Número de la página que se desea obtener de la tabla de productos. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -174,8 +174,8 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 		{
 			"id": number,
 			"name": string,
-			"familyName": string,
-			"homeAddres": string
+			"isDiscontinued": bool,
+			"price": decimal?
 		},
 		//...
 	]
@@ -184,20 +184,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Get Page Postman](./pictures/Employee/get_page.png)
+![Get Page Postman](./pictures/Product/get_page.png)
 
 ***
 
-### ✔ Get All Employees
+### ✔ Get All Products
 
-**Descripción**: Devuelve un JSON con todos los registros de la tabla de empleados. Los registros que se muestren dependerán de la página solicitada.
+**Descripción**: Devuelve un JSON con todos los registros de la tabla de productos. Los registros que se muestren dependerán de la página solicitada.
 
-**URL**: /api/Employee/pages/{requestedPage}
+**URL**: /api/Product/pages/{requestedPage}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **requestedPage**: Número de la página que se desea obtener de la tabla de empleados. Número entero positivo.
+* **requestedPage**: Número de la página que se desea obtener de la tabla de productos. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -209,8 +209,8 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 		{
 			"id": number,
 			"name": string,
-			"familyName": string,
-			"homeAddres": string
+			"isDiscontinued": bool,
+			"price": decimal?
 		},
 		//...
 	]
@@ -219,4 +219,4 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Get All Employees Postman](./pictures/Employee/get_all_employees.png)
+![Get All Products Postman](./pictures/Product/get_all_products.png)
