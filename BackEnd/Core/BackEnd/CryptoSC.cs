@@ -48,11 +48,9 @@ namespace Core.BackEnd
         // Genera un Token JWT con los datos del usuario que recibe.
         public static string GenerateToken(User dbUser)
         {
-            //Modify This
-            string key = JWTParamethers.key;
-            string issuer = JWTParamethers.issuer;
+            JwtParamethers jwt = new();
 
-            SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(key));
+            SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(jwt.GetSecretKey()));
             SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
             Claim[] claims = new[]
@@ -63,8 +61,8 @@ namespace Core.BackEnd
             };
 
             JwtSecurityToken securityToken = new(
-                issuer: issuer,
-                audience: issuer,
+                issuer: jwt.GetIssuer(),
+                audience: jwt.GetIssuer(),
                 claims,
                 expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials

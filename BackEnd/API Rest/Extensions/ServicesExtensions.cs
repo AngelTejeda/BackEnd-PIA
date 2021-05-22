@@ -15,15 +15,17 @@ namespace API_Rest.Extensions
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    JwtParamethers jwt = new();
+
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = JWTParamethers.issuer,
-                        ValidAudience = JWTParamethers.issuer,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTParamethers.key))
+                        ValidIssuer = jwt.GetIssuer(),
+                        ValidAudience = jwt.GetIssuer(),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.GetSecretKey()))
                     };
                 });
         }
