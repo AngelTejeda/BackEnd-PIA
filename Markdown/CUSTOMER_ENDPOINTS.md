@@ -1,16 +1,16 @@
 # Customer 🙍‍♂️
-El Controlador Employee se permite a un usuario autenticado interactuar con la table Employees de la Base de Datos Northwind.
+El Controlador Customer se permite a un usuario autenticado interactuar con la table Customer de la Base de Datos Northwind.
 
-## ✔ Get One Employee
+## ✔ Get One Customer
 
-**Descripción**: Devuelve un JSON con la información del empleado solicitado.
+**Descripción**: Devuelve un JSON con la información del cliente solicitado.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Customer/{id}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -27,15 +27,15 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Get One Employee Postman](./pictures/Employee/get_one_employee.png)
+![Get One Customer Postman](./pictures/Customer/get_one_customer.png)
 
 ***
 
-## ✔ Add Employee
+## ✔ Add Customer
 
-**Descripción**: Agrega un registro de la tabla Employees con la información especificada en el Body. Devuelve un JSON con el ID registrado para el empleado.
+**Descripción**: Agrega un registro de la tabla Customer con la información especificada en el Body. Devuelve un JSON con el ID registrado para el cliente.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Customer/{id}
 
 **Método  HTTP**: POST
 
@@ -47,21 +47,21 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 {
 	"name": string,
       /*
-      - Nombre del empleado.
+      - Nombre del cliente.
       - String de 10 caracteres máximo.
       - Obligatorio.
       */
 
 	"familyName": string,
       /*
-      - Apellido del empleado.
+      - Apellido del cliente.
       - String de 20 caracteres máximo.
       - Obligatorio.
       */
 
 	"homeAddres": string
       /*
-      - Dirección del empleado.
+      - Dirección del cliente.
       - String de 60 caracteres máximo.
       - Opcional.
       */
@@ -78,20 +78,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Add Employee Postman](./pictures/Employee/add_employee.png)
+![Add Customer Postman](./pictures/Customer/add_customer.png)
 
 ***
 
-## ✔ Update Employee
+## ✔ Update Customer
 
-**Descripción**: Modifica un registro de la tabla Employees con la información especificada en el Body.
+**Descripción**: Modifica un registro de la tabla Customer con la información especificada en el Body.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Customer/{id}
 
 **Método  HTTP**: PUT
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. Número entero positivo.
 
 **Parámetros del Body**:
 
@@ -99,21 +99,21 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 {
 	"name": string,
       /*
-      - Nombre del empleado.
+      - Nombre del cliente.
       - 10 caracteres máximo.
       - Obligatorio.
       */
 
 	"familyName": string,
       /*
-      - Apellido del empleado.
+      - Apellido del cliente.
       - 20 caracteres máximo.
       - Obligatorio.
       */
 
 	"homeAddres": string
       /*
-      - Dirección del empleado.
+      - Dirección del cliente.
       - 60 caracteres máximo.
       - Opcional.
       */
@@ -124,20 +124,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Update Employee Postman](./pictures/Employee/update_employee.png)
+![Update Customer Postman](./pictures/Customer/update_customer.png)
 
 ***
 
-## ✔ Delete Employee
+## ✔ Delete Customer
 
-**Descripción**: Elimina el registro del empleado especificado.
+**Descripción**: Elimina el registro del cliente especificado.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Customer/{id}
 
 **Método  HTTP**: DELETE
 
 **Parámetros del URL**:
-* **id**: Id del empleado solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -145,20 +145,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Delete Employee Postman](./pictures/Employee/delete_employee.png)
+![Delete Customer Postman](./pictures/Customer/delete_customer.png)
 
 ***
 
 ## ✔ Get Page
 
-**Descripción**: Devuelve un JSON con 10 registros de la tabla de empleados. Los registros que se muestren dependerán de la página solicitada.
+**Descripción**: Devuelve un JSON con 10 registros de la tabla de clientes. Los registros que se muestren dependerán de la página solicitada.
 
-**URL**: /api/Employee/pages/{requestedPage}
+**URL**: /api/Customer/pages/{requestedPage}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **requestedPage**: Número de la página que se desea obtener de la tabla de empleados. Número entero positivo.
+* **requestedPage**: Número de la página que se desea obtener de la tabla de clientes. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -184,20 +184,20 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Get Page Postman](./pictures/Employee/get_page.png)
+![Get Page Postman](./pictures/Customer/get_page.png)
 
 ***
 
-### ✔ Get All Employees
+### ✔ Get All Customers
 
-**Descripción**: Devuelve un JSON con todos los registros de la tabla de empleados. Los registros que se muestren dependerán de la página solicitada.
+**Descripción**: Devuelve un JSON con todos los registros de la tabla de clientes. Los registros que se muestren dependerán de la página solicitada.
 
-**URL**: /api/Employee/pages/{requestedPage}
+**URL**: /api/Customer/pages/{requestedPage}
 
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **requestedPage**: Número de la página que se desea obtener de la tabla de empleados. Número entero positivo.
+* **requestedPage**: Número de la página que se desea obtener de la tabla de clientes. Número entero positivo.
 
 **Parámetros del Body**: Ninguno
 
@@ -219,4 +219,4 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Prueba**:
 
-![Get All Employees Postman](./pictures/Employee/get_all_employees.png)
+![Get All Customers Postman](./pictures/Customer/get_all_customers.png)
