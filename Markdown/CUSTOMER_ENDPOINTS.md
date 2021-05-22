@@ -10,7 +10,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 **Método  HTTP**: GET
 
 **Parámetros del URL**:
-* **id**: Id del cliente solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. String de máximos 5 caracteres.
 
 **Parámetros del Body**: Ninguno
 
@@ -18,7 +18,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 ```typescript
 {
-	"id": number,
+	"id": string,
 	"company": string,
 	"contactFullName": string,
 	"contactPosition": string,
@@ -46,40 +46,40 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 ```typescript
 {
-	"id": number,
+	"id": string,
   	  /*
       - ID del cliente.
-	  - Entero de 5 números máximo.
+  	  - 5 caracteres máximo.
       - Obligatorio.
       */
 
 	"company": string,
       /*
-      - Nombre de la compañía del cliente.
-      - String de 40 caracteres máximo.
+      - Nombre de la compañía.
+      - 40 caracteres máximo.
       - Obligatorio.
       */
 
 	"contactFullName": string,
       /*
-      - Nombre completo del cliente.
-      - String de 30 caracteres máximo.
+      - Nombre del contacto de la compañía.
+      - 30 caracteres máximo.
       - Opcional.
       */
 
 	"contactPosition": string,
       /*
-      - Puesto del cliente.
-      - String de 30 caracteres máximo.
+      - Puesto del contacto de la compañía.
+      - 30 caracteres máximo.
       - Opcional.
       */
 
 	"contactPhone": string
-	  /*
-	  - Número del cliente.
-	  - String de 24 caracteres máximo.
-	  - Opcional.
-	  */
+      /*
+      - Número de contacto.
+      - 24 caracteres máximo.
+      - Opcional.
+      */
 }
 ```
 
@@ -87,7 +87,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 ```typescript
 {
-	"id": number
+	"id": string
 }
 ```
 
@@ -106,46 +106,39 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 **Método  HTTP**: PUT
 
 **Parámetros del URL**:
-* **id**: Id del cliente solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. String de 5 caracteres máximo.
 
 **Parámetros del Body**:
 
 ```typescript
 {
-	"id": number,
-  	  /*
-      - ID del cliente.
-	  - Entero de 5 números máximo.
-      - Obligatorio.
-      */
-
 	"company": string,
       /*
-      - Nombre de la compañía del cliente.
-      - String de 40 caracteres máximo.
-      - Opcional.
+      - Nombre de la compañía.
+      - 40 caracteres máximo.
+      - Obligatorio.
       */
 
 	"contactFullName": string,
       /*
-      - Nombre completo del cliente.
-      - String de 30 caracteres máximo.
+      - Nombre del contacto de la compañía.
+      - 30 caracteres máximo.
       - Opcional.
       */
 
 	"contactPosition": string,
       /*
-      - Puesto del cliente.
-      - String de 30 caracteres máximo.
+      - Puesto del contacto de la compañía.
+      - 30 caracteres máximo.
       - Opcional.
       */
 
 	"contactPhone": string
-	  /*
-	  - Número del cliente.
-	  - String de 24 caracteres máximo.
-	  - Opcional.
-	  */
+      /*
+      - Número de contacto.
+      - 24 caracteres máximo.
+      - Opcional.
+      */
 }
 ```
 
@@ -166,7 +159,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 **Método  HTTP**: DELETE
 
 **Parámetros del URL**:
-* **id**: Id del cliente solicitado. Número entero positivo.
+* **id**: Id del cliente solicitado. String de 5 caracteres máximo.
 
 **Parámetros del Body**: Ninguno
 
@@ -201,7 +194,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 	"lastPage":  number,
 	"responseList":  [
 		{
-			"id": number,
+			"id": string,
 			"company": string,
 			"contactFullName": string,
 			"contactPosition": string,
@@ -237,7 +230,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 {
 	[
 		{
-			"id": number,
+			"id": string,
 			"company": string,
 			"contactFullName": string,
 			"contactPosition": string,
