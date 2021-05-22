@@ -18,7 +18,7 @@ namespace API_Rest.Controllers
         // GET api/<ProductController>/{id}
         [HttpGet("{id}")]
         [Product_IdExistsActionFilter]
-        public IActionResult Get(int id)
+        public IActionResult Get([PositiveInteger] int id)
         {
             // Obtiene el empleado de la Base de Datos.
             Product dbProduct = new ProductSC().GetProductById(id);
@@ -83,7 +83,7 @@ namespace API_Rest.Controllers
         // PUT api/<ProductController>/{id}
         [HttpPut("{id}")]
         [Product_IdExistsActionFilter]
-        public IActionResult Put(int id, [FromBody] ProductBasicInfoPutDTO modifiedProduct)
+        public IActionResult Put([PositiveInteger] int id, [FromBody] ProductBasicInfoPutDTO modifiedProduct)
         {
             // Se actualiza un registro.
             new ProductSC().UpdateProduct(id, modifiedProduct);
@@ -94,7 +94,7 @@ namespace API_Rest.Controllers
         // DELETE api/<ProductController>/{id}
         [HttpDelete("{id}")]
         [Product_IdExistsActionFilter]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([PositiveInteger] int id)
         {
             // Se elimina un registro.
             new ProductSC().DeleteProduct(id);

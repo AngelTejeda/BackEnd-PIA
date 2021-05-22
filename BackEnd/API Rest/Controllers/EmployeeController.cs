@@ -18,7 +18,7 @@ namespace API_Rest.Controllers
         // GET api/<EmployeeController>/{id}
         [HttpGet("{id}")]
         [Employee_IdExistsActionFilter]
-        public IActionResult Get(int id)
+        public IActionResult Get([PositiveInteger] int id)
         {
             // Obtiene el empleado de la Base de Datos.
             Employee dbEmployee = new EmployeeSC().GetEmployeeById(id);
@@ -83,7 +83,7 @@ namespace API_Rest.Controllers
         // PUT api/<EmployeeController>/{id}
         [HttpPut("{id}")]
         [Employee_IdExistsActionFilter]
-        public IActionResult Put(int id, [FromBody] EmployeePersonalInfoPutDTO modifiedEmployee)
+        public IActionResult Put([PositiveInteger] int id, [FromBody] EmployeePersonalInfoPutDTO modifiedEmployee)
         {
             // Se actualiza un registro.
             new EmployeeSC().UpdateEmployee(id, modifiedEmployee);
@@ -94,7 +94,7 @@ namespace API_Rest.Controllers
         // DELETE api/<EmployeeController>/{id}
         [HttpDelete("{id}")]
         [Employee_IdExistsActionFilter]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([PositiveInteger] int id)
         {
             // Se elimina un registro.
             new EmployeeSC().DeleteEmployee(id);
