@@ -6,7 +6,7 @@ namespace Core.BackEnd
 {
     public class JwtParamethers
     {
-        private JwtParamehtersModel _json;
+        private readonly JwtParamehtersModel _json;
 
         public JwtParamethers()
         {
