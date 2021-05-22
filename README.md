@@ -33,7 +33,7 @@ Hay muchas maneras de descargar el repositorio a su equipo, explicaremos la form
 Si ya cuenta con Git Bash, diríjase a la carpeta donde desea clonar el repositorio. Si da click derecho en esta carpeta verá la opción `Git Bash Here`. Al seleccionarla se abrirá una terminal. En ella introduzca el siguiente comando
 
 ```
-git clone AQUÍ HAY QUE PONER EL LINK!!!!!!!
+git clone https://github.com/AngelTejeda/Backend-PIA
 ```
 
 Se empezarán a descargar los archivos del proyecto a su equipo local. Una vez se terminen de descargar puede cerrar la ventana.
@@ -61,6 +61,10 @@ En el proyecto `Core` verá el archivo `connections.json` con la siguiente estru
 ```
 
 Sustituya `<SERVER>` por el nombre de su servidor de SQL Server donde creó la Base de Datos Northwind.
+
+Ahora dé click derecho al proyecto `API Rest` y seleccione la opción `Set as Startup Project`.
+
+Nuevamente dé click derecho al proyecto, dentro del menú en la opción `Add` seleccione `Project Reference`. En la ventana que se muestra marque la casilla del proyecto `Core` y seleccione `Ok`.
 
 Una vez hecho esto ejecute la aplicación dando click en en el botón `▶IIS Express` o presionando la tecla `f5`.  Una nueva ventana en su navegador debería abrirse en la dirección `https://localhost:44310/swagger/index.html`. Verifique que el puerto en el que se está ejecutando sea el `44310`.
 
