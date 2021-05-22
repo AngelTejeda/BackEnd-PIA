@@ -19,9 +19,10 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 ```typescript
 {
 	"id": number,
-	"name": string,
-	"familyName": string,
-	"homeAddres": string
+	"company": string,
+	"contactFullName": string,
+	"contactPosition": string,
+	"contactPhone": string
 }
 ```
 
@@ -45,26 +46,40 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 ```typescript
 {
-	"name": string,
-      /*
-      - Nombre del cliente.
-      - String de 10 caracteres máximo.
+	"id": number,
+  	  /*
+      - ID del cliente.
+	  - Entero de 5 números máximo.
       - Obligatorio.
       */
 
-	"familyName": string,
+	"company": string,
       /*
-      - Apellido del cliente.
-      - String de 20 caracteres máximo.
+      - Nombre de la compañía del cliente.
+      - String de 40 caracteres máximo.
       - Obligatorio.
       */
 
-	"homeAddres": string
+	"contactFullName": string,
       /*
-      - Dirección del cliente.
-      - String de 60 caracteres máximo.
+      - Nombre completo del cliente.
+      - String de 30 caracteres máximo.
       - Opcional.
       */
+
+	"contactPosition": string,
+      /*
+      - Puesto del cliente.
+      - String de 30 caracteres máximo.
+      - Opcional.
+      */
+
+	"contactPhone": string
+	  /*
+	  - Número del cliente.
+	  - String de 24 caracteres máximo.
+	  - Opcional.
+	  */
 }
 ```
 
@@ -97,26 +112,40 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 ```typescript
 {
-	"name": string,
-      /*
-      - Nombre del cliente.
-      - 10 caracteres máximo.
+	"id": number,
+  	  /*
+      - ID del cliente.
+	  - Entero de 5 números máximo.
       - Obligatorio.
       */
 
-	"familyName": string,
+	"company": string,
       /*
-      - Apellido del cliente.
-      - 20 caracteres máximo.
-      - Obligatorio.
-      */
-
-	"homeAddres": string
-      /*
-      - Dirección del cliente.
-      - 60 caracteres máximo.
+      - Nombre de la compañía del cliente.
+      - String de 40 caracteres máximo.
       - Opcional.
       */
+
+	"contactFullName": string,
+      /*
+      - Nombre completo del cliente.
+      - String de 30 caracteres máximo.
+      - Opcional.
+      */
+
+	"contactPosition": string,
+      /*
+      - Puesto del cliente.
+      - String de 30 caracteres máximo.
+      - Opcional.
+      */
+
+	"contactPhone": string
+	  /*
+	  - Número del cliente.
+	  - String de 24 caracteres máximo.
+	  - Opcional.
+	  */
 }
 ```
 
@@ -173,9 +202,10 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 	"responseList":  [
 		{
 			"id": number,
-			"name": string,
-			"familyName": string,
-			"homeAddres": string
+			"company": string,
+			"contactFullName": string,
+			"contactPosition": string,
+			"contactPhone": string
 		},
 		//...
 	]
@@ -208,9 +238,10 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 	[
 		{
 			"id": number,
-			"name": string,
-			"familyName": string,
-			"homeAddres": string
+			"company": string,
+			"contactFullName": string,
+			"contactPosition": string,
+			"contactPhone": string
 		},
 		//...
 	]
