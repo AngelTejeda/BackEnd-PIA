@@ -1,7 +1,7 @@
 # Product 🛒
 El Controlador Product se permite a un usuario autenticado interactuar con la table Product de la Base de Datos Northwind.
 
-## ✔ Get One Employee
+## ✔ Get One Product
 
 **Descripción**: Devuelve un JSON con la información del producto solicitado.
 
@@ -20,8 +20,8 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 {
 	"id": number,
 	"name": string,
-	"isDiscontinued": bool,
-	"price": decimal?
+	"isDiscontinued": boolean,
+	"price": number | null
 }
 ```
 
@@ -48,18 +48,17 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 	"name": string,
       /*
       - Nombre del producto.
-      - String de 40 caracteres máximo.
+      - 40 caracteres máximo.
       - Obligatorio.
       */
 
-	"isDiscontinued": bool,
+	"isDiscontinued": boolean,
       /*
-      - Status del producto.
-      - Boleano.
+      - Estatus del producto.
       - Obligatorio.
       */
 
-	"price": decimal?
+	"price": number
       /*
       - Precio del producto.
       - Decimal positivo.
@@ -100,18 +99,17 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 	"name": string,
       /*
       - Nombre del producto.
-      - String de 40 caracteres máximo.
+      - 40 caracteres máximo.
       - Obligatorio.
       */
 
-	"isDiscontinued": bool,
+	"isDiscontinued": boolean,
       /*
-      - Status del producto.
-      - Boleano.
+      - Estatus del producto.
       - Obligatorio.
       */
 
-	"price": decimal?
+	"price": number
       /*
       - Precio del producto.
       - Decimal positivo.
@@ -174,8 +172,8 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 		{
 			"id": number,
 			"name": string,
-			"isDiscontinued": bool,
-			"price": decimal?
+			"isDiscontinued": boolean,
+			"price": number | null
 		},
 		//...
 	]
@@ -209,8 +207,8 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 		{
 			"id": number,
 			"name": string,
-			"isDiscontinued": bool,
-			"price": decimal?
+			"isDiscontinued": boolean,
+			"price": number | null
 		},
 		//...
 	]
