@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark barra">
+    <ion-button slot="start" fill="clear" style="margin:0px;" color="warning" routerLink="/tabs/home-tab">
+      <ion-icon name="arrow-back-outline" style="font-size: 28px;"></ion-icon>
+    </ion-button>
+    <ion-title>
+      Información del Equipo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="text-align: center;">
+    <ion-icon name="people-circle" class="content"></ion-icon>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let integrante of equipo" detail (click)="abrirModal(integrante)">
+      <ion-icon name="person" style="margin-right: 5px;"></ion-icon>
+      <ion-label>{{integrante.fullname}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

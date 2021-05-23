@@ -1,7 +1,19 @@
 ion-item-divider{
+    margin-top: 10px;
+    color: var(--ion-color-tertiary);
     font-size: 16px;
-    --background: var(--ion-color-tertiary);
-    border-radius: 12px;
-    color: white;
     font-weight: bolder;
+    border-left: 10px solid var(--ion-color-tertiary);
+    border-top: 2px solid var(--ion-color-tertiary);
+    border-right: 2px solid var(--ion-color-primary);
+    border-bottom: 2px solid var(--ion-color-primary);
+}
+
+ion-item-divider.top{
+    margin-top: 5px;
+}
+
+
+ion-item{
+    font-size: 14px;
 }

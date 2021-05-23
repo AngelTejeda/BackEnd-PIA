@@ -10,11 +10,15 @@ export class TareaInfoPage implements OnInit {
 
   constructor(private modalController: ModalController) { }
 
-  equipo=[
-    "José Santos Flores Silva",
-    "Edson Yael García Silva",
-    "Sofía Alejandra Gaytán Díaz",
-    "Ángel Tejeda Tiscareño"
+  implementaciones=[
+    "CRUD: Create",
+    "CRUD: Read",
+    "CRUD: Update",
+    "CRUD: Delete",
+    "Token Bearer JWT",
+    "CORS Configurado",
+    "Base de Datos SQL",
+    "Frontend"
   ]
 
   ngOnInit() {

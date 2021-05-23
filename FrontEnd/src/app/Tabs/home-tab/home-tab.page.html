@@ -3,10 +3,6 @@
     <ion-title style="font-size: 18px;">
       Desarrollo Web: BackEnd
     </ion-title>
-    <!--Informacion de la Tarea
-    <ion-button slot="end" fill="clear" style="margin:0px;" color="warning" (click)="abrirModal()">
-      <ion-icon name="information-circle" style="font-size: 28px;"></ion-icon>
-    </ion-button>-->
     <ion-button slot="end" fill="clear" style="margin:0px;" color="warning" (click)="abrirLogin()">
       <ion-icon name="person-circle" style="font-size: 28px;"></ion-icon>
     </ion-button>
@@ -15,12 +11,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="titulo">
-  <ion-icon name="desktop-sharp" class="iconTitulo"></ion-icon>
-  <h3>Tarea 4</h3>
+  <h3>PIA</h3>
+  <h4>Producto Integrador de Aprendizaje</h4>
 </div>
 
 <div class="informacion">
-  Cliente Servidor en Ionic, basado en la Tarea #3. 
-  <br><br>Incluye: Lista de entidad, borrar elementos y dar de alta un nuevo elemento.
+  <ion-list lines="none">
+    <ion-item detail color="light" *ngFor="let page of pages" [routerLink]="page.url">
+      <ion-icon [name]="page.icon" class="iconPage"></ion-icon>
+      <ion-label class="menu" color="dark">{{page.title}}</ion-label>
+    </ion-item>
+  </ion-list>
 </div>
 </ion-content>

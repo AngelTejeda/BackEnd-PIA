@@ -1,21 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark barra">
-    <ion-title>
-      Tarea 4
-    </ion-title>
-    <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="salir()">
-      <ion-icon name="close" style="font-size: 28px;"></ion-icon>
+    <ion-button slot="start" fill="clear" style="margin:0px;" color="warning" routerLink="/tabs/home-tab">
+      <ion-icon name="arrow-back-outline" style="font-size: 28px;"></ion-icon>
     </ion-button>
-
+    <ion-title>
+      Información General
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list lines="none" style="margin: 10px">
 
-    <ion-item-divider>
+    
+    <ion-item-divider class="top">
       <ion-label>
-      Materia
+        Materia
       </ion-label>
     </ion-item-divider>
 
@@ -25,7 +25,7 @@
 
     <ion-item-divider>
       <ion-label>
-      Grupo
+        Grupo
       </ion-label>
     </ion-item-divider>
 
@@ -35,7 +35,7 @@
 
     <ion-item-divider>
       <ion-label>
-      Docente
+        Docente
       </ion-label>
     </ion-item-divider>
 
@@ -45,15 +45,16 @@
 
     <ion-item-divider>
       <ion-label>
-        Integrantes del Equipo
+        Implementaciones
       </ion-label>
     </ion-item-divider>
 
-
-    <ion-item *ngFor="let integrante of equipo" style="margin: 0px;">
-      <ion-icon name="person" style="margin-right: 5px; color: black"></ion-icon>
-      <ion-label>{{integrante}}</ion-label>
-    </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let implementacion of implementaciones">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+          <ion-label>{{implementacion}}</ion-label>
+        </ion-item>
+      </ion-list>
 
   </ion-list>
 

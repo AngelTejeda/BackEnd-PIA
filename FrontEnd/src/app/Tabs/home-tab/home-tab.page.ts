@@ -13,6 +13,24 @@ export class HomeTabPage {
 
   @Input() user: { login: boolean, user: string, password: string };
 
+  pages=[
+    {
+      title: "Información General",
+      url: "/tarea-info",
+      icon: "information-circle"
+    },
+    {
+      title: "Información del Equipo",
+      url: "/team",
+      icon: "people-circle"
+    },
+    {
+      title: "Repositorio de GitHub",
+      url: "/repositorio",
+      icon: "logo-github"
+    }
+  ]
+
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {

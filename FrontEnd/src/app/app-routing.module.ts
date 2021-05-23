@@ -32,6 +32,18 @@ const routes: Routes = [
   {
     path: 'user-input',
     loadChildren: () => import('./pages/user-input/user-input.module').then( m => m.UserInputPageModule)
+  },
+  {
+    path: 'team',
+    loadChildren: () => import('./pages/team/team.module').then( m => m.TeamPageModule)
+  },
+  {
+    path: 'member',
+    loadChildren: () => import('./pages/member/member.module').then( m => m.MemberPageModule)
+  },
+  {
+    path: 'repositorio',
+    loadChildren: () => import('./pages/repositorio/repositorio.module').then( m => m.RepositorioPageModule)
   }
 
 ];
