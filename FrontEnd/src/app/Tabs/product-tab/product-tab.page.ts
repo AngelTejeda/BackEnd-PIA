@@ -183,7 +183,11 @@ export class ProductTabPage implements OnInit {
 
   // NAVIGATION //
   reloadCurrentPage() {
-    this.getPage(this.currentPage);
+    if (this.currentPage == null) {
+      this.getPage(1)
+    } else {
+      this.getPage(this.currentPage);
+    }
   }
 
   getPreviousPage() {

@@ -31,7 +31,7 @@ export class EmployeeTabPage {
   constructor(private http: HttpProviderService, private modalController: ModalController) { }
 
   ngOnInit() {
-    this.getPage(1);
+      this.getPage(1);
   }
 
   //////////////////////////////////
@@ -176,7 +176,11 @@ export class EmployeeTabPage {
 
   // NAVIGATION //
   reloadCurrentPage() {
-    this.getPage(this.currentPage);
+    if (this.currentPage == null) {
+      this.getPage(1)
+    } else {
+      this.getPage(this.currentPage);
+    }
   }
 
   getPreviousPage() {

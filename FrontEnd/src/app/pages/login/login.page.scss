@@ -1,0 +1,16 @@
+ion-content{
+    text-align: center;
+}
+
+ion-icon.content{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--ion-color-primary);
+    font-size: 200px;
+}
+
+ion-item{
+    --highlight-color-focused: transparent;
+    --highlight-color-valid: var(--ion-color-success);
+    --highlight-color-invalid: var(--ion-color-danger);
+}

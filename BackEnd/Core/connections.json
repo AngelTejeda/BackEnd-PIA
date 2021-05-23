@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "NorthwindDatabase": "Server=<SERVER>; Database=Northwind; Trusted_Connection=True;"
+    "NorthwindDatabase": "Server=DESKTOP-1I6K8JL\\SQLEXPRESS; Database=Northwind; Trusted_Connection=True;"
   }
 }

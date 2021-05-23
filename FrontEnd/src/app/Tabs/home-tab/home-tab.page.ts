@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { LoginPage } from 'src/app/pages/login/login.page';
 import { TareaInfoPage } from 'src/app/pages/tarea-info/tarea-info.page';
 import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
 
@@ -10,10 +11,22 @@ import { HttpProviderService } from 'src/app/Services/http-provider/http-provide
 })
 export class HomeTabPage {
 
-  constructor(private http: HttpProviderService, public modalController: ModalController) {}
+  @Input() user: { login: boolean, user: string, password: string };
+
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {
-    this.http.login("admin", "password").subscribe((data) => {console.log(data)});
+    //this.http.login("admin", "password").subscribe((data) => {console.log(data)});
+    if (this.user == undefined) {
+      this.user = {
+        user: "",
+        password: "",
+        login: false
+      }
+    }
+    if (!this.user.login) {
+      this.abrirLogin();
+    }
   }
 
 
@@ -23,5 +36,24 @@ export class HomeTabPage {
     });
     return await modal.present();
   }
+
+  async abrirLogin() {
+    let myEvent = new EventEmitter();
+    myEvent.subscribe(res => {
+      this.user = res;
+    });
+
+    const modal = await this.modalController.create({
+      component: LoginPage,
+      componentProps: {
+        user: this.user.user,
+        password: this.user.password,
+        login: this.user.login,
+        loginEvent: myEvent,
+      }
+    });
+    return await modal.present();
+  }
+
 
 }

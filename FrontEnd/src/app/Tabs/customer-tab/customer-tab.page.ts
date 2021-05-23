@@ -1,5 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { error } from 'selenium-webdriver';
 import { IResponse } from 'src/app/Models/api-response-model';
 import CustomerModels from 'src/app/models/customer-models';
 import { CustomerInputPage } from 'src/app/pages/customer-input/customer-input.page';
@@ -27,7 +28,7 @@ export class CustomerTab {
   loading: boolean = false;
   addingElement: boolean = false;
 
-  constructor(private http: HttpProviderService, private modalController: ModalController) { }
+  constructor(private http: HttpProviderService, private modalController: ModalController) {}
 
   ngOnInit() {
     this.getPage(1);
@@ -84,7 +85,7 @@ export class CustomerTab {
     this.http.postRequest(this.name, employee)
       .subscribe(
         (data) => {
-          this.emitAlert("Add",`Successfully Added with id ${data}!`);
+          this.emitAlert("Add", `Successfully Added with id ${data}!`);
           // If we are in the last page, reload to show the "Next Page" button.
           if (!this.nextPage)
             this.reloadCurrentPage();
@@ -114,7 +115,7 @@ export class CustomerTab {
           if (err.status == 409 || err.status == 400)
             this.emitAlert("Update", "One or more fields in the modified information infringee a constraint on the Data Base.\nFailed to Modify.");
           else
-            this.emitAlert("Update","An unexpected error ocurred while updating the data.");
+            this.emitAlert("Update", "An unexpected error ocurred while updating the data.");
         }
       )
       .add(() => {
@@ -130,15 +131,15 @@ export class CustomerTab {
       .subscribe(
         (data) => {
           // If the deleated employee is the las employee of the page.
-          if(this.customers.length == 1) {
+          if (this.customers.length == 1) {
             // If there is a previous page, go back.
-            if(this.previousPage)
+            if (this.previousPage)
               this.getPreviousPage();
-            
+
             // If there is not a previous page, but there is a next page, go next.
-            else if(this.nextPage)
+            else if (this.nextPage)
               this.getNextPage();
-            
+
             // Otherwise, there are no more elements to show
             else {
               this.nextPage = null;
@@ -154,10 +155,10 @@ export class CustomerTab {
             this.reloadCurrentPage();
         },
         (err) => {
-          if(err.status == 409 || err.status == 400)
-            this.emitAlert("Delete","Cannot delete this element because it infringes a Constraint.")
+          if (err.status == 409 || err.status == 400)
+            this.emitAlert("Delete", "Cannot delete this element because it infringes a Constraint.")
           else
-          this.emitAlert("Delete","An unexpected error ocurred while deleting the record.")
+            this.emitAlert("Delete", "An unexpected error ocurred while deleting the record.")
         }
       );
   }
@@ -165,7 +166,11 @@ export class CustomerTab {
 
   // NAVIGATION //
   reloadCurrentPage() {
-    this.getPage(this.currentPage);
+    if (this.currentPage == null) {
+      this.getPage(1)
+    } else {
+      this.getPage(this.currentPage);
+    }
   }
 
   getPreviousPage() {
@@ -202,10 +207,10 @@ export class CustomerTab {
     alert.header = header + " Customer";
     alert.message = message;
     alert.buttons = ['OK'];
-  
+
     document.body.appendChild(alert);
     await alert.present();
-  
+
     const { role } = await alert.onDidDismiss();
     //console.log('onDidDismiss resolved with role', role);
   }

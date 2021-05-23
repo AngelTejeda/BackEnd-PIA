@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark barra">
+    <ion-title>
+      Login
+    </ion-title>
+    <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="salir()">
+      <ion-icon name="close" style="font-size: 28px;"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-icon name="person-circle" class="content"></ion-icon>
+
+  <ion-item id="user">
+    <ion-label color="primary" position="stacked">Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="user" [readonly]="login" [required]="agregar"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="agregar">
+    <ion-label color="primary" position="stacked">Correo</ion-label>
+    <ion-input type="email" [(ngModel)]="email" [readonly]="login" [required]="agregar"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="!login">
+    <ion-label color="primary" position="stacked">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password" [readonly]="login" [required]="agregar"></ion-input>
+  </ion-item>
+
+  <div style="text-align: center; margin: 40px 10px;">
+    <ion-button *ngIf="!login && !agregar" (click)="ingresar()" expand="block" fill="outline">
+      Ingresar
+    </ion-button>
+    <ion-button *ngIf="!login && !agregar" (click)="add()" expand="block" fill="outline" color="secondary">
+      Registrarte
+    </ion-button>
+    <ion-button *ngIf="agregar" (click)="addUser()" expand="block" fill="outline" color="primary">
+      Registrarte
+    </ion-button>
+    <ion-button *ngIf="agregar" (click)="cancel()" expand="block" fill="outline" color="secondary">
+      Cancelar
+    </ion-button>
+    <ion-button *ngIf="login && !agregar" (click)="cerrarSesion()" fill="outline">
+      Cerrar Sesion
+    </ion-button>
+  </div>
+
+</ion-content>

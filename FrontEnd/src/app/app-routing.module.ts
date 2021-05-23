@@ -24,6 +24,14 @@ const routes: Routes = [
   {
     path: 'help-info',
     loadChildren: () => import('./pages/help-info/help-info.module').then( m => m.HelpInfoPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'user-input',
+    loadChildren: () => import('./pages/user-input/user-input.module').then( m => m.UserInputPageModule)
   }
 
 ];
