@@ -25,7 +25,7 @@ export class HomeTabPage {
       icon: "people-circle"
     },
     {
-      title: "Repositorio de GitHub",
+      title: "Repositorio en GitHub",
       url: "/repositorio",
       icon: "logo-github"
     }
