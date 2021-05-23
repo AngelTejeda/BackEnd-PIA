@@ -15,17 +15,17 @@
 
   <ion-item id="user">
     <ion-label color="primary" position="stacked">Usuario</ion-label>
-    <ion-input type="text" [(ngModel)]="user" [readonly]="login" [required]="agregar"></ion-input>
+    <ion-input type="text" [(ngModel)]="user" [readonly]="login"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="agregar">
     <ion-label color="primary" position="stacked">Correo</ion-label>
-    <ion-input type="email" [(ngModel)]="email" [readonly]="login" [required]="agregar"></ion-input>
+    <ion-input type="email" [(ngModel)]="email" [readonly]="login"></ion-input>
   </ion-item>
 
   <ion-item *ngIf="!login">
     <ion-label color="primary" position="stacked">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="password" [readonly]="login" [required]="agregar"></ion-input>
+    <ion-input type="password" [(ngModel)]="password" [readonly]="login"></ion-input>
   </ion-item>
 
   <div style="text-align: center; margin: 40px 10px;">

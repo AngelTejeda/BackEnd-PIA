@@ -17,8 +17,8 @@ export class LoginPage implements OnInit {
   email: string;
   @Input() login: boolean;
   @Output() loginEvent = new EventEmitter();
-  
-  agregar:boolean;
+
+  agregar: boolean;
 
   userObject: { login: boolean, user: string, password: string }
 
@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
     this.http.token = null;
     this.userObject = {
       login: false,
@@ -63,40 +63,52 @@ export class LoginPage implements OnInit {
     this.loginEvent.emit(this.userObject);
   }
 
-  add(){
+  add() {
     this.agregar = true;
     this.user = "";
     this.email = "";
     this.password = "";
   }
 
-  addUser(){
+  addUser() {
+
+    var patt = new RegExp('^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$');
+    var res = patt.test(this.email);
+
+    if(res){
 
     let user = {
       userName: this.user,
       email: this.email,
       password: this.password
     }
-  
-      this.http.postRequest("Login", user)
-        .subscribe(
-          (data) => {
-            this.emitAlert("Add", 'Successfully Added');
-            // If we are in the last page, reload to show the "Next Page" button.
-          },
-          (err) => {
-            if (err.status == 409 || err.status == 400)
-              this.emitAlert("Add User", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
-            else
-              this.emitAlert("Add User", "An unexpected error ocurred while adding the record.");
-          }
-        )
-        .add(
-          () => { this.agregar = false; }
-        );
+
+    this.http.postRequest("Login", user)
+      .subscribe(
+        (data) => {
+          this.emitAlert("Add", 'Successfully Added');
+          // If we are in the last page, reload to show the "Next Page" button.
+        },
+        (err) => {
+          if (err.status == 409 || err.status == 400)
+            this.emitAlert("Add User", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
+          else
+            this.emitAlert("Add User", "An unexpected error ocurred while adding the record.");
+        }
+      )
+      .add(
+        () => { this.agregar = false; }
+      );
+    }else{
+      this.emitAlert("Add User", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
+      this.agregar = false;
+      this.user = "";
+      this.password = "";
+      this.email = "";
+    }
   }
 
-  cancel(){
+  cancel() {
     this.user = this.userObject.user;
     this.email = "";
     this.password = "";
@@ -107,10 +119,10 @@ export class LoginPage implements OnInit {
     alert.header = header;
     alert.message = message;
     alert.buttons = ['OK'];
-  
+
     document.body.appendChild(alert);
     await alert.present();
-  
+
     const { role } = await alert.onDidDismiss();
     //console.log('onDidDismiss resolved with role', role);
   }
