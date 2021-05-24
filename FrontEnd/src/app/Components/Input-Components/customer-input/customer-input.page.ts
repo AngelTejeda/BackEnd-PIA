@@ -19,39 +19,38 @@ export class CustomerInputPage implements OnInit {
 
   @Output() element = new EventEmitter();
 
-  customer: CustomerModels.ICustomer;
-  
-    constructor(private modalController: ModalController) { }
-  
-    ngOnInit() {
-    }
-  
-    salir(){
-      this.modalController.dismiss();
+  constructor(private modalController: ModalController) { }
+
+  ngOnInit() {
+  }
+
+  salir() {
+    this.modalController.dismiss();
+  }
+
+  // Emite un evento con la información del registro modificado.
+  emitUpdateEvent() {
+    let modifiedCustomer = {
+      id: this.id,
+      company: this.company,
+      contactFullName: this.contactFullName,
+      contactPhone: this.contactPhone,
+      contactPosition: this.contactPhone
     }
 
-    updateElement(){
-      this.customer = {
-        id: this.id,
-        company: this.company,
-        contactFullName: this.contactFullName,
-        contactPhone: this.contactPhone,
-        contactPosition: this.contactPhone
-      }
-  
-      if(this.agregar) {
-        let newCustomer: CustomerModels.ICustomerPost = {
-          id: this.id,
-          company: this.company,
-          contactFullName: this.contactFullName,
-          contactPhone: this.contactPhone,
-          contactPosition: this.contactPhone
-        }
-  
-        this.element.emit(newCustomer);
-      }
-      else {
-        this.element.emit(this.customer);
-      }
+    this.element.emit(modifiedCustomer);
+  }
+
+  // Emite un evento con la información del nuevo registro.
+  emitPostEvent() {
+    let customer = {
+      id: this.id,
+      company: this.company,
+      contactFullName: this.contactFullName,
+      contactPhone: this.contactPhone,
+      contactPosition: this.contactPhone
     }
+
+    this.element.emit(customer);
+  }
 }

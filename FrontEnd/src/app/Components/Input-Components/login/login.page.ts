@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-
 import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
@@ -12,14 +11,12 @@ export class LoginPage implements OnInit {
   @Output() loginEvent = new EventEmitter();
   @Input() user: string;
   @Input() logedOn: boolean;
-  
+
   password: string;
   email: string;
 
   signUpView: boolean;
   loading: boolean;
-
-  //userObject: { login: boolean, user: string }
 
   constructor(private modalController: ModalController, private http: HttpProviderService) { }
 
@@ -38,7 +35,7 @@ export class LoginPage implements OnInit {
     this.clearUserFields();
   }
 
-   // Función para regresar a la vista de inicio de sesión.
+  // Función para regresar a la vista de inicio de sesión.
   changeToLoginView() {
     this.signUpView = false;
     this.clearUserFields();
@@ -54,7 +51,7 @@ export class LoginPage implements OnInit {
       .subscribe(
         (success) => {
           // Respuesta satisfactoria
-          if(success) {
+          if (success) {
             this.logedOn = true;
 
             // Contenido del evento emitido a HomeTab.
@@ -62,7 +59,7 @@ export class LoginPage implements OnInit {
               logedOn: true,
               user: this.user,
             }
-  
+
             this.emitAlert("Sesion Iniciada", "Se ha iniciado sesion satisfactoriamente");
             this.loginEvent.emit(userObject);
           }
@@ -84,7 +81,7 @@ export class LoginPage implements OnInit {
     this.logedOn = false
 
     this.emitAlert("Sesion Concluida", "Se ha cerrado sesion satisfactoriamente");
-    this.loginEvent.emit({user: this.user, logedOn: false});
+    this.loginEvent.emit({ user: this.user, logedOn: false });
   }
 
   // Función para registrar un nuevo usuario
@@ -94,7 +91,7 @@ export class LoginPage implements OnInit {
     var isMailValid = patt.test(this.email);
 
     // Si el correo válido.
-    if(isMailValid){
+    if (isMailValid) {
       let user = {
         userName: this.user,
         email: this.email,
@@ -109,7 +106,7 @@ export class LoginPage implements OnInit {
           () => {
             this.emitAlert("Add", 'Successfully Added');
           },
-          
+
           // Error
           (err) => {
             if (err.status == 409 || err.status == 400)
@@ -121,11 +118,11 @@ export class LoginPage implements OnInit {
         .add(
           () => { this.signUpView = false; }
         );
-      }
-      else {
-        this.clearUserFields();
-        this.emitAlert("Add User","One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
-      }
+    }
+    else {
+      this.clearUserFields();
+      this.emitAlert("Add User", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
+    }
   }
 
   private clearUserFields() {

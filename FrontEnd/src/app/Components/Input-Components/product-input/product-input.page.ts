@@ -18,52 +18,51 @@ export class ProductInputPage implements OnInit {
 
   @Output() element = new EventEmitter();
 
-  product: ProductModels.IProduct;
   descontinuado: string;
-  
-    constructor(private modalController: ModalController) { }
-  
-    ngOnInit() {
-      if(this.discontinued){
-        this.descontinuado = "true"
-      }else{
-        this.descontinuado = "false";
-      }
+
+  constructor(private modalController: ModalController) { }
+
+  ngOnInit() {
+    if (this.discontinued) {
+      this.descontinuado = "true"
+    } else {
+      this.descontinuado = "false";
     }
-  
-    salir(){
-      this.modalController.dismiss();
+  }
+
+  salir() {
+    this.modalController.dismiss();
+  }
+
+  toggleDiscontinued() {
+    if (this.descontinuado == "true") {
+      this.discontinued = true;
+    } else {
+      this.discontinued = false;
+    }
+  }
+
+  // Emite un evento con la información del registro modificado.
+  emitUpdateEvent() {
+    let modifiedPorduct = {
+      id: this.id,
+      name: this.name,
+      price: this.price,
+      isDiscontinued: this.discontinued
     }
 
-    descontinuar(){
-      if(this.descontinuado == "true"){
-        this.discontinued =  true;
-      }else{
-        this.discontinued = false;
-      }
+    this.element.emit(modifiedPorduct);
+  }
+
+  // Emite un evento con la información del nuevo registro.
+  emitPostEvent() {
+    let product: ProductModels.IProductPost = {
+      name: this.name,
+      price: this.price,
+      isDiscontinued: this.discontinued
     }
 
-    updateElement(){
-     
-      this.product = {
-        id: this.id,
-        name: this.name, 
-        price: this.price,
-        isDiscontinued: this.discontinued
-      }
-  
-      if(this.agregar) {
-        let newEmployee: ProductModels.IProductPost = {
-          name: this.name, 
-          price: this.price,
-          isDiscontinued: this.discontinued
-        }
-  
-        this.element.emit(newEmployee);
-      }
-      else {
-        this.element.emit(this.product);
-      }
-    }
-  
+    this.element.emit(product);
+  }
+
 }

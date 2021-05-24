@@ -5,7 +5,7 @@
     </ion-title>
 
     <span *ngIf="!edit" slot="end">
-      <span *ngIf="!discontinued" >
+      <span *ngIf="!discontinued">
         <ion-chip class="disponible">
           <ion-label>Disponible</ion-label>
         </ion-chip>
@@ -20,24 +20,21 @@
     <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="salir()">
       <ion-icon name="close" style="font-size: 28px;"></ion-icon>
     </ion-button>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <div style="text-align: center;">
     <ion-icon name="stop-circle" class="content"></ion-icon>
   </div>
 
   <span *ngIf="!agregar">
+    <ion-item>
+      <ion-label color="primary" position="stacked">ID</ion-label>
+      <ion-input [(ngModel)]="id" readonly></ion-input>
+    </ion-item>
+  </span>
 
-  <ion-item>
-    <ion-label color="primary" position="stacked">ID</ion-label>
-    <ion-input [(ngModel)]="id" readonly></ion-input>
-  </ion-item>
-
-</span>
   <ion-item>
     <ion-label color="primary" position="stacked">Nombre</ion-label>
     <ion-input [(ngModel)]="name" [readonly]="!edit"></ion-input>
@@ -51,7 +48,7 @@
   <span *ngIf="edit">
     <ion-item>
       <ion-label color="primary">Estado</ion-label>
-      <ion-select [(ngModel)]="descontinuado" (ionChange)="descontinuar()">
+      <ion-select [(ngModel)]="descontinuado" (ionChange)="toggleDiscontinued()">
         <ion-select-option value="false">Disponible</ion-select-option>
         <ion-select-option value="true">Descontinuado</ion-select-option>
       </ion-select>
@@ -60,12 +57,11 @@
 
   <div style="text-align: center; margin: 20px;">
     <span *ngIf="edit&&!agregar">
-      <ion-button (click)="updateElement()" fill="outline"><b>Editar</b></ion-button>
+      <ion-button (click)="emitUpdateEvent()" fill="outline"><b>Editar</b></ion-button>
     </span>
-  
+
     <span *ngIf="agregar">
-      <ion-button (click)="updateElement()" fill="outline"><b>Agregar</b></ion-button>
+      <ion-button (click)="emitPostEvent()" fill="outline"><b>Agregar</b></ion-button>
     </span>
   </div>
-
 </ion-content>

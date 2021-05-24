@@ -3,10 +3,10 @@
     <ion-title>
       {{contactFullName}}
     </ion-title>
+
     <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="salir()">
       <ion-icon name="close" style="font-size: 28px;"></ion-icon>
     </ion-button>
-
   </ion-toolbar>
 </ion-header>
 
@@ -42,12 +42,12 @@
   </ion-item>
 
   <div style="text-align: center; margin: 20px;">
-  <span *ngIf="edit&&!agregar">
-    <ion-button (click)="updateElement()" fill="outline"><b>Editar</b></ion-button>
-  </span>
+    <span *ngIf="edit&&!agregar">
+      <ion-button (click)="emitUpdateEvent()" fill="outline"><b>Editar</b></ion-button>
+    </span>
 
-  <span *ngIf="agregar">
-    <ion-button (click)="updateElement()" fill="outline"><b>Agregar</b></ion-button>
-  </span>
-</div>
+    <span *ngIf="agregar">
+      <ion-button (click)="emitPostEvent()" fill="outline"><b>Agregar</b></ion-button>
+    </span>
+  </div>
 </ion-content>
