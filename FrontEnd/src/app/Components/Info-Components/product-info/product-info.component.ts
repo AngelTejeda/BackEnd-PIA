@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { CustomerModels } from 'src/app/models/customer-models';
-import { CustomerInputPage } from 'src/app/pages/customer-input/customer-input.page';
+import { ProductModels } from 'src/app/models/product-models';
+import { ProductInputPage } from '../../Input-Components/product-input/product-input.page';
 
 @Component({
-  selector: 'app-customer-info',
-  templateUrl: './customer-info.component.html',
-  styleUrls: ['./customer-info.component.scss'],
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss'],
 })
-export class CustomerInfoComponent implements OnInit {
+export class ProductInfoComponent implements OnInit {
 
-  @Input() customer: CustomerModels.ICustomer;
+  @Input() product: ProductModels.IProduct;
 
   @Output() deleteEvent = new EventEmitter();
   @Output() updateEvent = new EventEmitter();
@@ -19,31 +19,30 @@ export class CustomerInfoComponent implements OnInit {
 
   ngOnInit() { }
 
-  delete(id: string) {
+  delete(id: number) {
     this.deleteEvent.emit(id);
   }
 
-  update(id: string) {
+  update(id: number) {
     this.abrirModal(true, false);
   }
 
   async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
-      this.customer = res;
-      this.updateEvent.emit(this.customer);
+      this.product = res;
+      this.updateEvent.emit(this.product);
 
       modal.dismiss();
     });
 
     const modal = await this.modalController.create({
-      component: CustomerInputPage,
+      component: ProductInputPage,
       componentProps: {
-        id: this.customer.id,
-        company: this.customer.company,
-        contactFullName: this.customer.contactFullName,
-        contactPosition: this.customer.contactPosition,
-        contactPhone: this.customer.contactPhone,
+        id: this.product.id,
+        name: this.product.name,
+        price: this.product.price,
+        discontinued: this.product.isDiscontinued,
         edit: editable,
         agregar: agregable,
         element: myEvent

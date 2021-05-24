@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { EmployeeModels } from 'src/app/Models/employee-models';
-import { EmployeeInputPage } from 'src/app/pages/employee-input/employee-input.page';
+import { EmployeeInputPage } from '../../Input-Components/employee-input/employee-input.page';
 
 @Component({
   selector: 'app-employee-info',

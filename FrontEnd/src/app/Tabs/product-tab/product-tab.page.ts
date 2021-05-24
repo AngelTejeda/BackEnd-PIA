@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { IResponse } from 'src/app/Models/api-response-model';
 import { ProductModels } from 'src/app/models/product-models';
 import { HelpInfoPage } from 'src/app/pages/help-info/help-info.page';
-import { ProductInputPage } from 'src/app/pages/product-input/product-input.page';
+import { ProductInputPage } from 'src/app/Components/Input-Components/product-input/product-input.page';
 import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
 
 @Component({

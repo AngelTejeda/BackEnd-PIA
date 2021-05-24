@@ -2,7 +2,7 @@ import { Component, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IResponse } from 'src/app/Models/api-response-model';
 import CustomerModels from 'src/app/models/customer-models';
-import { CustomerInputPage } from 'src/app/pages/customer-input/customer-input.page';
+import { CustomerInputPage } from 'src/app/Components/Input-Components/customer-input/customer-input.page';
 import { HelpInfoPage } from 'src/app/pages/help-info/help-info.page';
 import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
 
