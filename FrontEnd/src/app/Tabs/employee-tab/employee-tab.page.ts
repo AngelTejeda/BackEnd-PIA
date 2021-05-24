@@ -21,6 +21,7 @@ export class EmployeeTabPage {
   nextPage?: number = null;
   currentPage?: number = null;
   previousPage?: number = null;
+  lastPage: number = 0;
 
   // Variables de navegación
   loaded: boolean = false;
@@ -42,6 +43,11 @@ export class EmployeeTabPage {
       this.getPage(this.currentPage);
   }
 
+  // Manda una petición para obtener la primera página.
+  getFirstPage() {
+    this.getPage(1);
+  }
+
   // Manda una petición para obtener la página anterior.
   getPreviousPage() {
     this.getPage(this.previousPage);
@@ -51,6 +57,12 @@ export class EmployeeTabPage {
   getNextPage() {
     this.getPage(this.nextPage);
   }
+
+  // Manda una petición para obtener la última página.
+  getLastPage() {
+    this.getPage(this.lastPage);
+  }
+
 
   // Hace una petición para obtener una página de la tabla de la Base de Datos.
   private getPage(page: number) {
@@ -67,6 +79,7 @@ export class EmployeeTabPage {
           this.currentPage = data.currentPage;
           this.previousPage = data.previousPage;
           this.employees = data.responseList;
+          this.lastPage = data.lastPage;
 
           // Verificamos que la lista de respuesta no esté vacía.
           this.loaded = this.employees.length > 0 ? true : false;
@@ -84,6 +97,7 @@ export class EmployeeTabPage {
           this.nextPage = null;
           this.currentPage = null;
           this.previousPage = null;
+          this.lastPage = 0;
 
           this.error = true;
           this.loaded = false;
@@ -180,6 +194,7 @@ export class EmployeeTabPage {
               this.nextPage = null;
               this.currentPage = null;
               this.previousPage = null;
+              this.lastPage = 0;
 
               this.loaded = false;
             }

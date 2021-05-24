@@ -52,6 +52,12 @@
         </div>
 
         <div class="botones" style="margin-bottom: 10px">
+          <ion-button *ngIf="currentPage != 1" (click)="getFirstPage()" style="margin: 5px">
+            <ion-icon name="arrow-back"></ion-icon>
+            <ion-icon name="arrow-back"></ion-icon>
+            <ion-label style="font-size: x-small; margin-left: 2px;">Primera</ion-label>
+          </ion-button>
+
           <ion-button *ngIf="previousPage" (click)="getPreviousPage()" style="margin: 5px">
             <ion-icon name="arrow-back"></ion-icon>
             <ion-label style="font-size: x-small; margin-left: 2px;">Anterior</ion-label>
@@ -59,6 +65,12 @@
 
           <ion-button *ngIf="nextPage" (click)="getNextPage()" style="margin: 5px">
             <ion-label style="font-size: x-small; margin-right: 2px;">Siguiente</ion-label>
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="lastPage != 0 && currentPage != lastPage" (click)="getLastPage()" style="margin: 5px">
+            <ion-label style="font-size: x-small; margin-right: 2px;">Última</ion-label>
+            <ion-icon name="arrow-forward"></ion-icon>
             <ion-icon name="arrow-forward"></ion-icon>
           </ion-button>
         </div>
