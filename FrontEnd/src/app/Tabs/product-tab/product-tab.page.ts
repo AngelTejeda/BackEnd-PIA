@@ -2,9 +2,9 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IResponse } from 'src/app/Models/api-response-model';
 import { ProductModels } from 'src/app/models/product-models';
-import { HelpInfoPage } from 'src/app/pages/help-info/help-info.page';
+import { HelpInfoPage } from 'src/app/Components/help-info/help-info.page';
 import { ProductInputPage } from 'src/app/Components/Input-Components/product-input/product-input.page';
-import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
+import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
   selector: 'app-product-tab',

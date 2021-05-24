@@ -3,8 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { IResponse } from 'src/app/Models/api-response-model';
 import CustomerModels from 'src/app/models/customer-models';
 import { CustomerInputPage } from 'src/app/Components/Input-Components/customer-input/customer-input.page';
-import { HelpInfoPage } from 'src/app/pages/help-info/help-info.page';
-import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
+import { HelpInfoPage } from 'src/app/Components/help-info/help-info.page';
+import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
   selector: 'app-customer-tab',

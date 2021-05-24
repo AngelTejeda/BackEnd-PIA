@@ -3,6 +3,7 @@
     <ion-button slot="start" fill="clear" style="margin:0px;" color="warning" routerLink="/tabs/home-tab">
       <ion-icon name="arrow-back-outline" style="font-size: 28px;"></ion-icon>
     </ion-button>
+    
     <ion-title>
       Información General
     </ion-title>
@@ -12,7 +13,7 @@
 <ion-content>
   <ion-list lines="none" style="margin: 10px">
 
-    
+
     <ion-item-divider class="top">
       <ion-label>
         Materia
@@ -49,12 +50,12 @@
       </ion-label>
     </ion-item-divider>
 
-      <ion-list>
-        <ion-item *ngFor="let implementacion of implementaciones">
-          <ion-icon name="chevron-forward-outline"></ion-icon>
-          <ion-label>{{implementacion}}</ion-label>
-        </ion-item>
-      </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let implementacion of implementaciones">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+        <ion-label>{{implementacion}}</ion-label>
+      </ion-item>
+    </ion-list>
 
   </ion-list>
 

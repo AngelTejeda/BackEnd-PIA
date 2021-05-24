@@ -14,23 +14,22 @@ export class MemberPage implements OnInit {
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
-
     this.imagen = "/assets/integrantes/" + this.integrante.imagen;
-
   }
 
   salir(){
     this.modalController.dismiss();
   }
 
-  dormir(){
+  // Cambia la imagen del integrante.
+  alternarImagen(){
     let nombre = this.integrante.name.split(" ");
     let cambio = "/assets/integrantes/"+nombre[0]+nombre[1]+"2.png"
-    if(this.imagen == cambio ){
+
+    if(this.imagen == cambio )
       this.imagen = "/assets/integrantes/" + this.integrante.imagen;
-    }else{
+    else
       this.imagen = cambio;
-    }
   }
 
 }

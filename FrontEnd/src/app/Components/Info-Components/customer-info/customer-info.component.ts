@@ -19,15 +19,23 @@ export class CustomerInfoComponent implements OnInit {
 
   ngOnInit() { }
 
+  // Emite un evento al padre para que haga una petición DELETE.
   delete(id: string) {
     this.deleteEvent.emit(id);
   }
 
-  update(id: string) {
+  // Abre el modal en modo vista.
+  show() {
+    this.abrirModal(false, false);
+  }
+
+  // Abre el modal en modo edición
+  update() {
     this.abrirModal(true, false);
   }
 
-  async abrirModal(editable: boolean, agregable: boolean) {
+  // Abre el modal según los parámetros indicados
+  private async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
       this.customer = res;

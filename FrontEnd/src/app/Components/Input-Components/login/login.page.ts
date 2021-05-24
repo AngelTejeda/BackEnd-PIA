@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
+import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
   selector: 'app-login',

@@ -3,8 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { IResponse } from 'src/app/Models/api-response-model';
 import EmployeeModels from 'src/app/Models/employee-models';
 import { EmployeeInputPage } from 'src/app/Components/Input-Components/employee-input/employee-input.page';
-import { HelpInfoPage } from 'src/app/pages/help-info/help-info.page';
-import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
+import { HelpInfoPage } from 'src/app/Components/help-info/help-info.page';
+import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
   selector: 'app-employee-tab',

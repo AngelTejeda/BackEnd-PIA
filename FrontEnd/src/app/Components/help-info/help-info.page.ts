@@ -8,12 +8,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class HelpInfoPage implements OnInit {
 
-  constructor(private modalController:ModalController) { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
 
-    salir(){
+  salir() {
     this.modalController.dismiss();
   }
 

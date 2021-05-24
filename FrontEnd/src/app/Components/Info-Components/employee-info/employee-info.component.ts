@@ -18,15 +18,23 @@ export class EmployeeInfoComponent implements OnInit {
 
   ngOnInit() { }
 
+  // Emite un evento al padre para que haga una petición DELETE.
   delete(id: number) {
     this.deleteEvent.emit(id);
   }
 
-  update(id: number) {
+  // Abre el modal en modo vista.
+  show() {
+    this.abrirModal(false, false);
+  }
+
+  // Abre el modal en modo edición
+  update() {
     this.abrirModal(true, false);
   }
 
-  async abrirModal(editable: boolean, agregable: boolean) {
+  // Abre el modal según los parámetros indicados
+  private async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
       this.employee = res;

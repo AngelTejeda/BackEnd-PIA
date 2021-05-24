@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpProviderService } from './Services/http-provider/http-provider.service';
+import { HttpProviderService } from './Services/http-provider.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './Components/components.module';
 import { FormsModule } from '@angular/forms';

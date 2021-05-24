@@ -20,11 +20,11 @@ const routes: Routes = [
   },
   {
     path: 'tarea-info',
-    loadChildren: () => import('./pages/tarea-info/tarea-info.module').then( m => m.TareaInfoPageModule)
+    loadChildren: () => import('./Components/Home-Components/tarea-info/tarea-info.module').then( m => m.TareaInfoPageModule)
   },
   {
     path: 'help-info',
-    loadChildren: () => import('./pages/help-info/help-info.module').then( m => m.HelpInfoPageModule)
+    loadChildren: () => import('./Components/help-info/help-info.module').then( m => m.HelpInfoPageModule)
   },
   {
     path: 'login',
@@ -32,15 +32,15 @@ const routes: Routes = [
   },
   {
     path: 'team',
-    loadChildren: () => import('./pages/team/team.module').then( m => m.TeamPageModule)
+    loadChildren: () => import('./Components/Home-Components/team/team.module').then( m => m.TeamPageModule)
   },
   {
     path: 'member',
-    loadChildren: () => import('./pages/member/member.module').then( m => m.MemberPageModule)
+    loadChildren: () => import('./Components/Home-Components/member/member.module').then( m => m.MemberPageModule)
   },
   {
     path: 'repositorio',
-    loadChildren: () => import('./pages/repositorio/repositorio.module').then( m => m.RepositorioPageModule)
+    loadChildren: () => import('./Components/Home-Components/repositorio/repositorio.module').then( m => m.RepositorioPageModule)
   }
 
 ];

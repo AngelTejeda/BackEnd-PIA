@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoginPage } from 'src/app/Components/Input-Components/login/login.page';
-import { TareaInfoPage } from 'src/app/pages/tarea-info/tarea-info.page';
-import { HttpProviderService } from 'src/app/Services/http-provider/http-provider.service';
+import { TareaInfoPage } from 'src/app/Components/Home-Components/tarea-info/tarea-info.page';
+import { HttpProviderService } from 'src/app/Services/http-provider.service';
 
 @Component({
   selector: 'app-home-tab',

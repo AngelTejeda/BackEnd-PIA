@@ -19,14 +19,22 @@ export class ProductInfoComponent implements OnInit {
 
   ngOnInit() { }
 
-  delete(id: number) {
+  // Emite un evento al padre para que haga una petición DELETE.
+  delete(id: string) {
     this.deleteEvent.emit(id);
   }
 
-  update(id: number) {
+  // Abre el modal en modo vista.
+  show() {
+    this.abrirModal(false, false);
+  }
+
+  // Abre el modal en modo edición
+  update() {
     this.abrirModal(true, false);
   }
 
+  // Abre el modal según los parámetros indicados
   async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
