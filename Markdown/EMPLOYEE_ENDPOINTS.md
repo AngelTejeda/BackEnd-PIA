@@ -1,5 +1,5 @@
 # Employee 👷‍♂️
-El Controlador Employee se permite a un usuario autenticado interactuar con la table Employees de la Base de Datos Northwind.
+El Controlador Employee permite a un usuario autenticado interactuar con la table Employees de la Base de Datos Northwind.
 
 ## ✔ Get One Employee
 
@@ -35,7 +35,7 @@ El Controlador Employee se permite a un usuario autenticado interactuar con la t
 
 **Descripción**: Agrega un registro de la tabla Employees con la información especificada en el Body. Devuelve un JSON con el ID registrado para el empleado.
 
-**URL**: /api/Employee/{id}
+**URL**: /api/Employee
 
 **Método  HTTP**: POST
 

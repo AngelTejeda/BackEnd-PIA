@@ -7,7 +7,7 @@ La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2
 
 * [Employee](./EMPLOYEE_ENDPOINTS.md) 👷‍♂️
   + GET /api/Employee/{id}
-  + POST /api/Employee/{id}
+  + POST /api/Employee
   + PUT /api/Employee/{id}
   + DELETE /api/Employee/{id}
   + GET /api/Employee/pages/{requestedPage}
@@ -15,7 +15,7 @@ La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2
 
 * [Product](./PRODUCT_ENDPOINTS.md) 🛒
   + GET /api/Product/{id}
-  + POST /api/Product/{id}
+  + POST /api/Product
   + PUT /api/Product/{id}
   + DELETE /api/Product/{id}
   + GET /api/Product/pages/{requestedPage}
@@ -23,7 +23,7 @@ La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2
 
 * [Customer](./CUSTOMER_ENDPOINTS.md) 🙍‍♂️
   + GET /api/Customer/{id}
-  + POST /api/Customer/{id}
+  + POST /api/Customer
   + PUT /api/Customer/{id}
   + DELETE /api/Customer/{id}
   + GET /api/Customer/pages/{requestedPage}

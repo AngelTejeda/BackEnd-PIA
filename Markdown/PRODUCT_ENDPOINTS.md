@@ -1,5 +1,5 @@
 # Product 🛒
-El Controlador Product se permite a un usuario autenticado interactuar con la table Product de la Base de Datos Northwind.
+El Controlador Product permite a un usuario autenticado interactuar con la table Product de la Base de Datos Northwind.
 
 ## ✔ Get One Product
 
@@ -35,7 +35,7 @@ El Controlador Product se permite a un usuario autenticado interactuar con la ta
 
 **Descripción**: Agrega un registro de la tabla Product con la información especificada en el Body. Devuelve un JSON con el ID registrado para el product.
 
-**URL**: /api/Product/{id}
+**URL**: /api/Product
 
 **Método  HTTP**: POST
 

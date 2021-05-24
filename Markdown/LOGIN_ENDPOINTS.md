@@ -3,7 +3,7 @@ El Controlador Login se utiliza para iniciar sesión y dar de alta a usuarios qu
 
 ## ✔ Login
 
-**Descripción**: Devuelve un token que puede ser utilizado para hacer peticiones al resto de endpoints de la aplicación.
+**Descripción**: En caso de que el usuario y la contraseña correspondan a un registro válido de la tabla Users en Northwind, devuelve un token que puede ser utilizado para hacer peticiones al resto de endpoints de la aplicación.
 
 **URL**: /api/Login
 
@@ -22,6 +22,7 @@ El Controlador Login se utiliza para iniciar sesión y dar de alta a usuarios qu
 	"token": string
 }
 ```
+
 **Prueba**:
 
 ![Login Postman](./pictures/Login/login.png)

@@ -1,5 +1,5 @@
 # Customer 🙍‍♂️
-El Controlador Customer se permite a un usuario autenticado interactuar con la table Customer de la Base de Datos Northwind.
+El Controlador Customer permite a un usuario autenticado interactuar con la tabla Customer de la Base de Datos Northwind.
 
 ## ✔ Get One Customer
 
@@ -36,7 +36,7 @@ El Controlador Customer se permite a un usuario autenticado interactuar con la t
 
 **Descripción**: Agrega un registro de la tabla Customer con la información especificada en el Body. Devuelve un JSON con el ID registrado para el cliente.
 
-**URL**: /api/Customer/{id}
+**URL**: /api/Customer
 
 **Método  HTTP**: POST
 
