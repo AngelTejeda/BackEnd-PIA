@@ -3,7 +3,7 @@
     <ion-title>
       Login
     </ion-title>
-    <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="salir()">
+    <ion-button slot="end" fill="clear" style="margin:0px;" color="danger" (click)="closeModal()">
       <ion-icon name="close" style="font-size: 28px;"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -15,33 +15,35 @@
 
   <ion-item id="user">
     <ion-label color="primary" position="stacked">Usuario</ion-label>
-    <ion-input type="text" [(ngModel)]="user" [readonly]="login"></ion-input>
+    <ion-input type="text" [(ngModel)]="user" [readonly]="logedOn"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="agregar">
+  <ion-item *ngIf="signUpView">
     <ion-label color="primary" position="stacked">Correo</ion-label>
-    <ion-input type="email" [(ngModel)]="email" [readonly]="login"></ion-input>
+    <ion-input type="email" [(ngModel)]="email" [readonly]="logedOn"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="!login">
+  <ion-item *ngIf="!logedOn">
     <ion-label color="primary" position="stacked">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="password" [readonly]="login"></ion-input>
+    <ion-input type="password" [(ngModel)]="password" [readonly]="logedOn"></ion-input>
   </ion-item>
 
   <div style="text-align: center; margin: 40px 10px;">
-    <ion-button *ngIf="!login && !agregar" (click)="ingresar()" expand="block" fill="outline">
-      Ingresar
+    <ion-button *ngIf="!logedOn && !signUpView" (click)="login()" expand="block" fill="outline">
+      <span *ngIf="!loading">Ingresar</span>
+      <span *ngIf="loading"><ion-spinner name="circles"></ion-spinner></span>
+
     </ion-button>
-    <ion-button *ngIf="!login && !agregar" (click)="add()" expand="block" fill="outline" color="secondary">
+    <ion-button *ngIf="!logedOn && !signUpView" (click)="changeToSingUpView()" expand="block" fill="outline" color="secondary">
       Registrarte
     </ion-button>
-    <ion-button *ngIf="agregar" (click)="addUser()" expand="block" fill="outline" color="primary">
+    <ion-button *ngIf="signUpView" (click)="addUser()" expand="block" fill="outline" color="primary">
       Registrarte
     </ion-button>
-    <ion-button *ngIf="agregar" (click)="cancel()" expand="block" fill="outline" color="secondary">
+    <ion-button *ngIf="signUpView" (click)="changeToLoginView()" expand="block" fill="outline" color="secondary">
       Cancelar
     </ion-button>
-    <ion-button *ngIf="login && !agregar" (click)="cerrarSesion()" fill="outline">
+    <ion-button *ngIf="logedOn && !signUpView" (click)="cerrarSesion()" fill="outline">
       Cerrar Sesion
     </ion-button>
   </div>

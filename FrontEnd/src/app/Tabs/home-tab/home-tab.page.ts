@@ -11,9 +11,9 @@ import { HttpProviderService } from 'src/app/Services/http-provider/http-provide
 })
 export class HomeTabPage {
 
-  @Input() user: { login: boolean, user: string, password: string };
+  userObject: { logedOn: boolean, user: string }
 
-  pages=[
+  pages = [
     {
       title: "Información General",
       url: "/tarea-info",
@@ -34,42 +34,37 @@ export class HomeTabPage {
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
-    //this.http.login("admin", "password").subscribe((data) => {console.log(data)});
-    if (this.user == undefined) {
-      this.user = {
-        user: "",
-        password: "",
-        login: false
-      }
+    this.userObject = {
+      user: "",
+      logedOn: false
     }
-    if (!this.user.login) {
-      this.abrirLogin();
-    }
-  }
 
+    this.abrirLogin();
+  }
 
   async abrirModal() {
     const modal = await this.modalController.create({
       component: TareaInfoPage
     });
+
     return await modal.present();
   }
 
   async abrirLogin() {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
-      this.user = res;
+      this.userObject = res;
     });
 
     const modal = await this.modalController.create({
       component: LoginPage,
       componentProps: {
-        user: this.user.user,
-        password: this.user.password,
-        login: this.user.login,
+        user: this.userObject.user,
+        logedOn: this.userObject.logedOn,
         loginEvent: myEvent,
       }
     });
+
     return await modal.present();
   }
 
