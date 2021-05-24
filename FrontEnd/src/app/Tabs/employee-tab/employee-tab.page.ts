@@ -16,54 +16,71 @@ export class EmployeeTabPage {
   name = "Employee";
   iconAdd = "person-add"
 
-  // API Response values
+  // Valores de Respuesta de la API
   employees: EmployeeModels.IEmployee[] = []
   nextPage?: number = null;
   currentPage?: number = null;
   previousPage?: number = null;
 
-  // Navigation helpers
+  // Variables de navegación
   loaded: boolean = false;
   error: boolean = false;
   loading: boolean = false;
   addingElement: boolean = false;
 
-  constructor(private http: HttpProviderService, private modalController: ModalController) { }
+  constructor(private http: HttpProviderService, private modalController: ModalController) {}
 
   ngOnInit() {
-      this.getPage(1);
+    this.getPage(1);
   }
 
-  //////////////////////////////////
+  // Manda una petición para obtener la página actual.
+  reloadCurrentPage() {
+    if (this.currentPage == null)
+      this.getPage(1)
+    else
+      this.getPage(this.currentPage);
+  }
 
-  // NOTA: Cambiar los alerts por algún cuadro de diálogo que salga por unos segundos y se vuelva a ocultar
-  // pero que el usuario no tenga que quitar manualmente.
+  // Manda una petición para obtener la página anterior.
+  getPreviousPage() {
+    this.getPage(this.previousPage);
+  }
 
-  //////////////////////////////////
+  // Manda una petición para obtener la página siguiente.
+  getNextPage() {
+    this.getPage(this.nextPage);
+  }
 
-
-  // HTTP REQUESTS //
-
-  getPage(page: number) {
+  // Hace una petición para obtener una página de la tabla de la Base de Datos.
+  private getPage(page: number) {
     this.loading = true;
 
+    // Petición
     this.http.getRequest<IResponse<EmployeeModels.IEmployee>>(this.name, `pages/${page}`)
+      // Esperamos respuesta.
       .subscribe(
+        // Respuesta satisfactoria.
         (data) => {
-          // Load info from the response.
+          // Cargamos la información de la respuesta.
           this.nextPage = data.nextPage;
           this.currentPage = data.currentPage;
           this.previousPage = data.previousPage;
           this.employees = data.responseList;
-          
-          // Check if the response list is not empty.
+
+          // Verificamos que la lista de respuesta no esté vacía.
           this.loaded = this.employees.length > 0 ? true : false;
 
-          // The API responded succesfully
+          // La API respondió satisfactoriamente.
           this.error = false;
         },
-        (error) => {
-          // Reset values
+
+        // Error
+        (err) => {
+          if(err.status == 401)
+            this.emitAlert("Lista de Registros", "No está autorizado. Inicie sesión para obtener su token de acceso.");
+          
+          // Se resetean los valores.
           this.nextPage = null;
           this.currentPage = null;
           this.previousPage = null;
@@ -77,80 +94,88 @@ export class EmployeeTabPage {
       });
   }
 
-
+  // Agregar un registro.
   addElement(employee: EmployeeModels.IEmployeePost) {
     this.addingElement = true;
 
-    // Esta información viene de un forms.
-    /*
-    let employee: EmployeeModels.IEmployeePost = {
-      homeAddress: "Una casa",
-      name: "Un nombre",
-      familyName: "Un apellido"
-    }
-    */
-
+    // Petición POST
     this.http.postRequest(this.name, employee)
+      // Esperamos respuesta
       .subscribe(
+        // Respuesta satisfactoria.
         (data: any) => {
-          this.emitAlert("Add",`Successfully Added with id ${data.id}!`);
-          // If we are in the last page, reload to show the "Next Page" button.
-          if(!this.nextPage)
+          // Si nos encontramos en la última página, recargamos para mostrar el botón de "siguiente".
+          if (!this.nextPage)
             this.reloadCurrentPage();
+          
+          this.emitAlert("Agregar", `Se agregó el registro con id ${data.id}.`);
         },
+
+        // Error
         (err) => {
-          console.log(err.status);
-          if(err.status == 409 || err.status == 400)
-          this.emitAlert("Add","One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.")
+          if (err.status == 409 || err.status == 400)
+            this.emitAlert("Agregar", "Uno o más campos no cumplen las restricciones de la tabla. No se pudo modificar el registro.");
+          else if(err.status == 401)
+            this.emitAlert("Agregar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-          this.emitAlert("Add","An unexpected error ocurred while adding the record.")
+            this.emitAlert("Agregar", "Ha ocurrido un error inesperado.")
         }
       )
       .add(
-        () => {this.addingElement = false;}
+        () => { this.addingElement = false; }
       );
   }
 
-
-  updateElement($event) {
+  // Modificar un registro
+  updateElement($event: EmployeeModels.IEmployee) {
     let employee: EmployeeModels.IEmployee = $event;
-    
+
+    // Petición PUT
     this.http.putRequest(this.name, employee.id.toString(), employee)
+      // Esperamos respuesta.
       .subscribe(
-        (data) => {
-          this.emitAlert("Update","Successfully Modified!");
+        // Respuesta satisfactoria.
+        () => {
+          this.emitAlert("Actualizar", "Registro modificado.");
         },
+
+        // Error
         (err) => {
-          if(err.status == 409 || err.status == 400)
-            this.emitAlert("Update", "One or more fields in the modified information infringee a constraint on the Data Base.\nFailed to Modify.");
+          if (err.status == 409 || err.status == 400)
+            this.emitAlert("Actualizar", "Uno o más campos no cumplen las restricciones de la tabla. No se pudo modificar el registro.");
+          else if(err.status == 401)
+            this.emitAlert("Actualizar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-          this.emitAlert("Update","An unexpected error ocurred while deleting the record.")
+            this.emitAlert("Actualizar", "Ha ocurrido un error inesperado.")
         }
       )
+      // Recargar la página para mostrar los cambios.
       .add(() => {
-        // Reload the page to show the changes.
         this.reloadCurrentPage();
       });
   }
 
-
-  deleteElement($event) {
+  // Eliminar registro
+  deleteElement($event: number) {
     let id = $event;
 
+    // Petición DELETE
     this.http.deleteRequest(this.name, `${id}`)
+      // Esperamos respuesta
       .subscribe(
-        (data) => {
-          // If the deleated employee is the las employee of the page.
-          if(this.employees.length == 1) {
-            // If there is a previous page, go back.
-            if(this.previousPage)
+        // Respuesta satisfactioria
+        () => {
+          // Si eliminamos el último registro de una página.
+          if (this.employees.length == 1) {
+            // Ir a la página anterior (si existe).
+            if (this.previousPage)
               this.getPreviousPage();
-            
-            // If there is not a previous page, but there is a next page, go next.
-            else if(this.nextPage)
+
+            // Si no existe, ir a la página siguiente.
+            else if (this.nextPage)
               this.getNextPage();
-            
-            // Otherwise, there are no more elements to show
+
+            // Si tampoco existe, mostrar el mensaje de que no hay más elementos.
             else {
               this.nextPage = null;
               this.currentPage = null;
@@ -160,52 +185,37 @@ export class EmployeeTabPage {
             }
           }
 
-          // Otherwise, reload the page to show the changes.
+          // Si no es el último elemento, recargar para mostrar cambios.
           else
             this.reloadCurrentPage();
         },
+
+        // Error
         (err) => {
-          if(err.status == 409 || err.status == 400)
-            this.emitAlert("Delete","Cannot delete this element because it infringes a Constraint.")
+          if (err.status == 409 || err.status == 400)
+            this.emitAlert("Eliminar", "No se puede eliminar el registro porque es llave foránea.")
+          else if(err.status == 401)
+            this.emitAlert("Eliminar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-          this.emitAlert("Delete","An unexpected error ocurred while deleting the record.")
+            this.emitAlert("Eliminar", "Ha ocurrido un error inesperado.")
         }
       );
   }
 
-
-  // NAVIGATION //
-  reloadCurrentPage() {
-    if (this.currentPage == null) {
-      this.getPage(1)
-    } else {
-      this.getPage(this.currentPage);
-    }
-  }
-
-  getPreviousPage() {
-    this.getPage(this.previousPage); 
-  }
-
-  getNextPage() {
-    this.getPage(this.nextPage);
-  }
-
+  // Modal para mostrar, editar o agregar un registro.
   async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
     myEvent.subscribe(res => {
       modal.dismiss();
-
       this.addElement(res);
     });
 
     const modal = await this.modalController.create({
       component: EmployeeInputPage,
-      componentProps:{
-        id: 0,
-        name: "",
-        familyName: "",
-        homeAddress: "",
+      componentProps: {
+        id: "",
+        company: "",
+        contactFullName: "",
         edit: editable,
         agregar: agregable,
         element: myEvent
@@ -214,17 +224,16 @@ export class EmployeeTabPage {
     return await modal.present();
   }
 
-  async emitAlert(header: string, message: string) {
+  private async emitAlert(header: string, message: string) {
     const alert = document.createElement('ion-alert');
     alert.header = header + " Employee";
     alert.message = message;
     alert.buttons = ['OK'];
-  
+
     document.body.appendChild(alert);
     await alert.present();
-  
+
     const { role } = await alert.onDidDismiss();
-    //console.log('onDidDismiss resolved with role', role);
   }
 
   async abrirAyuda() {

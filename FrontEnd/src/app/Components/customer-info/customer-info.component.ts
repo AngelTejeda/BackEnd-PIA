@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import {CustomerModels} from 'src/app/models/customer-models';
+import { CustomerModels } from 'src/app/models/customer-models';
 import { CustomerInputPage } from 'src/app/pages/customer-input/customer-input.page';
 
 @Component({
@@ -15,11 +15,9 @@ export class CustomerInfoComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
   @Output() updateEvent = new EventEmitter();
 
-  editing: boolean = false;
+  constructor(public modalController: ModalController) { }
 
-  constructor(public modalController:ModalController) { }
-
-  ngOnInit() {}
+  ngOnInit() { }
 
   delete(id: string) {
     this.deleteEvent.emit(id);
@@ -27,11 +25,6 @@ export class CustomerInfoComponent implements OnInit {
 
   update(id: string) {
     this.abrirModal(true, false);
-    //this.updateEvent.emit(id);
-  }
-
-  toggleEditing() {
-    this.editing = !this.editing;
   }
 
   async abrirModal(editable: boolean, agregable: boolean) {
@@ -45,7 +38,7 @@ export class CustomerInfoComponent implements OnInit {
 
     const modal = await this.modalController.create({
       component: CustomerInputPage,
-      componentProps:{
+      componentProps: {
         id: this.customer.id,
         company: this.customer.company,
         contactFullName: this.customer.contactFullName,

@@ -16,54 +16,71 @@ export class ProductTabPage implements OnInit {
   name = "Product";
   iconAdd = "add"
 
-  // API Response values
+  // Valores de Respuesta de la API
   products: ProductModels.IProduct[] = []
   nextPage?: number = null;
   currentPage?: number = null;
   previousPage?: number = null;
 
-  // Navigation helpers
+  // Variables de navegación
   loaded: boolean = false;
   error: boolean = false;
   loading: boolean = false;
   addingElement: boolean = false;
 
-  constructor(private http: HttpProviderService, public modalController: ModalController) { }
+  constructor(private http: HttpProviderService, private modalController: ModalController) {}
 
   ngOnInit() {
     this.getPage(1);
   }
 
-  //////////////////////////////////
+  // Manda una petición para obtener la página actual.
+  reloadCurrentPage() {
+    if (this.currentPage == null)
+      this.getPage(1)
+    else
+      this.getPage(this.currentPage);
+  }
 
-  // NOTA: Cambiar los alerts por algún cuadro de diálogo que salga por unos segundos y se vuelva a ocultar
-  // pero que el usuario no tenga que quitar manualmente.
+  // Manda una petición para obtener la página anterior.
+  getPreviousPage() {
+    this.getPage(this.previousPage);
+  }
 
-  //////////////////////////////////
+  // Manda una petición para obtener la página siguiente.
+  getNextPage() {
+    this.getPage(this.nextPage);
+  }
 
-
-  // HTTP REQUESTS //
-
-  getPage(page: number) {
+  // Hace una petición para obtener una página de la tabla de la Base de Datos.
+  private getPage(page: number) {
     this.loading = true;
 
+    // Petición
     this.http.getRequest<IResponse<ProductModels.IProduct>>(this.name, `pages/${page}`)
+      // Esperamos respuesta.
       .subscribe(
+        // Respuesta satisfactoria.
         (data) => {
-          // Load info from the response.
+          // Cargamos la información de la respuesta.
           this.nextPage = data.nextPage;
           this.currentPage = data.currentPage;
           this.previousPage = data.previousPage;
           this.products = data.responseList;
 
-          // Check if the response list is not empty.
+          // Verificamos que la lista de respuesta no esté vacía.
           this.loaded = this.products.length > 0 ? true : false;
 
-          // The API responded succesfully
+          // La API respondió satisfactoriamente.
           this.error = false;
         },
-        (error) => {
-          // Reset values
+
+        // Error
+        (err) => {
+          if(err.status == 401)
+            this.emitAlert("Lista de Registros", "No está autorizado. Inicie sesión para obtener su token de acceso.");
+          
+          // Se resetean los valores.
           this.nextPage = null;
           this.currentPage = null;
           this.previousPage = null;
@@ -77,32 +94,31 @@ export class ProductTabPage implements OnInit {
       });
   }
 
-
+  // Agregar un registro.
   addElement(employee: ProductModels.IProductPost) {
     this.addingElement = true;
 
-    // Esta información viene de un forms.
-    /*
-    let employee: EmployeeModels.IEmployeePost = {
-      homeAddress: "Una casa",
-      name: "Un nombre",
-      familyName: "Un apellido"
-    }
-    */
-
+    // Petición POST
     this.http.postRequest(this.name, employee)
+      // Esperamos respuesta
       .subscribe(
-        (data) => {
-          this.emitAlert("Add",`Successfully Added with id ${data}!`);
-          // If we are in the last page, reload to show the "Next Page" button.
+        // Respuesta satisfactoria.
+        (data: any) => {
+          // Si nos encontramos en la última página, recargamos para mostrar el botón de "siguiente".
           if (!this.nextPage)
             this.reloadCurrentPage();
+          
+          this.emitAlert("Agregar", `Se agregó el registro con id ${data.id}.`);
         },
+
+        // Error
         (err) => {
           if (err.status == 409 || err.status == 400)
-          this.emitAlert("Add", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
+            this.emitAlert("Agregar", "Uno o más campos no cumplen las restricciones de la tabla. No se pudo modificar el registro.");
+          else if(err.status == 401)
+            this.emitAlert("Agregar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-            this.emitAlert("Add", "An unexpected error ocurred while adding the record.");
+            this.emitAlert("Agregar", "Ha ocurrido un error inesperado.")
         }
       )
       .add(
@@ -110,54 +126,56 @@ export class ProductTabPage implements OnInit {
       );
   }
 
-
-  updateElement($event) {
+  // Modificar un registro
+  updateElement($event: ProductModels.IProduct) {
     let employee: ProductModels.IProduct = $event;
-    // Esta información vendría del formulario
-    /*
-    let employee: EmployeeModels.IEmployeePut = {
-      homeAddress: "Casita 2",
-      name: "Nombre 2",
-      familyName: "Apellido 2"
-    }
-    */
 
+    // Petición PUT
     this.http.putRequest(this.name, employee.id.toString(), employee)
+      // Esperamos respuesta.
       .subscribe(
-        (data) => {
-          this.emitAlert("Update", "Successfully Modified!");
+        // Respuesta satisfactoria.
+        () => {
+          this.emitAlert("Actualizar", "Registro modificado.");
         },
+
+        // Error
         (err) => {
           if (err.status == 409 || err.status == 400)
-            this.emitAlert("Update", "One or more fields in the modified information infringee a constraint on the Data Base.\nFailed to Modify.");
+            this.emitAlert("Actualizar", "Uno o más campos no cumplen las restricciones de la tabla. No se pudo modificar el registro.");
+          else if(err.status == 401)
+            this.emitAlert("Actualizar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-            this.emitAlert("Update", "An unexpected error ocurred while updating the data.");
+            this.emitAlert("Actualizar", "Ha ocurrido un error inesperado.")
         }
       )
+      // Recargar la página para mostrar los cambios.
       .add(() => {
-        // Reload the page to show the changes.
         this.reloadCurrentPage();
-      });;
+      });
   }
 
-
-  deleteElement($event) {
+  // Eliminar registro
+  deleteElement($event: number) {
     let id = $event;
 
+    // Petición DELETE
     this.http.deleteRequest(this.name, `${id}`)
+      // Esperamos respuesta
       .subscribe(
-        (data) => {
-          // If the deleated employee is the las employee of the page.
+        // Respuesta satisfactioria
+        () => {
+          // Si eliminamos el último registro de una página.
           if (this.products.length == 1) {
-            // If there is a previous page, go back.
+            // Ir a la página anterior (si existe).
             if (this.previousPage)
               this.getPreviousPage();
 
-            // If there is not a previous page, but there is a next page, go next.
+            // Si no existe, ir a la página siguiente.
             else if (this.nextPage)
               this.getNextPage();
 
-            // Otherwise, there are no more elements to show
+            // Si tampoco existe, mostrar el mensaje de que no hay más elementos.
             else {
               this.nextPage = null;
               this.currentPage = null;
@@ -167,52 +185,37 @@ export class ProductTabPage implements OnInit {
             }
           }
 
-          // Otherwise, reload the page to show the changes.
+          // Si no es el último elemento, recargar para mostrar cambios.
           else
             this.reloadCurrentPage();
         },
+
+        // Error
         (err) => {
           if (err.status == 409 || err.status == 400)
-            this.emitAlert("Delete", "Cannot delete this element because it infringes a Constraint.");
+            this.emitAlert("Eliminar", "No se puede eliminar el registro porque es llave foránea.")
+          else if(err.status == 401)
+            this.emitAlert("Eliminar", "No está autorizado. Inicie sesión para obtener su token de acceso.");
           else
-            this.emitAlert("Delete", "An unexpected error ocurred while deleting the record.");
+            this.emitAlert("Eliminar", "Ha ocurrido un error inesperado.")
         }
       );
   }
 
-
-  // NAVIGATION //
-  reloadCurrentPage() {
-    if (this.currentPage == null) {
-      this.getPage(1)
-    } else {
-      this.getPage(this.currentPage);
-    }
-  }
-
-  getPreviousPage() {
-    this.getPage(this.previousPage);
-  }
-
-  getNextPage() {
-    this.getPage(this.nextPage);
-  }
-
+  // Modal para mostrar, editar o agregar un registro.
   async abrirModal(editable: boolean, agregable: boolean) {
     let myEvent = new EventEmitter();
-    myEvent.subscribe(res => {;
+    myEvent.subscribe(res => {
       modal.dismiss();
-
       this.addElement(res);
     });
 
     const modal = await this.modalController.create({
       component: ProductInputPage,
       componentProps: {
-        id: 0,
-        name: "",
-        price: "",
-        discontinued: false,
+        id: "",
+        company: "",
+        contactFullName: "",
         edit: editable,
         agregar: agregable,
         element: myEvent
@@ -221,7 +224,7 @@ export class ProductTabPage implements OnInit {
     return await modal.present();
   }
 
-  async emitAlert(header: string, message: string) {
+  private async emitAlert(header: string, message: string) {
     const alert = document.createElement('ion-alert');
     alert.header = header + " Product";
     alert.message = message;
@@ -231,7 +234,6 @@ export class ProductTabPage implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    //console.log('onDidDismiss resolved with role', role);
   }
 
   async abrirAyuda() {

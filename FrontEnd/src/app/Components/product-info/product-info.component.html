@@ -1,14 +1,7 @@
 <ion-item-sliding>
   <ion-item detail (click)="abrirModal()">
-
     <ion-icon name="nutrition" style="margin-right: 5px;"></ion-icon>
     <ion-label>{{product.name}}</ion-label>
-
-    <div *ngIf="editing">
-      <!-- HERE GOES THE FORM TO EDIT THE EMPLOYEE -->
-      <app-employee-input></app-employee-input>
-      <ion-button (click)="update(product.id)">Modify!</ion-button>
-    </div>
   </ion-item>
 
   <ion-item-options side="end">

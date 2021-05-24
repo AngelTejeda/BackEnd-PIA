@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import {ProductModels} from 'src/app/models/product-models';
+import { ProductModels } from 'src/app/models/product-models';
 import { ProductInputPage } from 'src/app/pages/product-input/product-input.page';
 
 @Component({
@@ -15,11 +15,9 @@ export class ProductInfoComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
   @Output() updateEvent = new EventEmitter();
 
-  editing: boolean = false;
-
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   delete(id: number) {
     this.deleteEvent.emit(id);
@@ -27,11 +25,6 @@ export class ProductInfoComponent implements OnInit {
 
   update(id: number) {
     this.abrirModal(true, false);
-    //this.updateEvent.emit(id);
-  }
-
-  toggleEditing() {
-    this.editing = !this.editing;
   }
 
   async abrirModal(editable: boolean, agregable: boolean) {
@@ -45,7 +38,7 @@ export class ProductInfoComponent implements OnInit {
 
     const modal = await this.modalController.create({
       component: ProductInputPage,
-      componentProps:{
+      componentProps: {
         id: this.product.id,
         name: this.product.name,
         price: this.product.price,

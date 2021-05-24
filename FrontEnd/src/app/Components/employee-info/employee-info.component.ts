@@ -14,11 +14,9 @@ export class EmployeeInfoComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
   @Output() updateEvent = new EventEmitter();
 
-  editing: boolean = false;
-
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   delete(id: number) {
     this.deleteEvent.emit(id);
@@ -26,11 +24,6 @@ export class EmployeeInfoComponent implements OnInit {
 
   update(id: number) {
     this.abrirModal(true, false);
-    //this.updateEvent.emit(id);
-  }
-
-  toggleEditing() {
-    this.editing = !this.editing;
   }
 
   async abrirModal(editable: boolean, agregable: boolean) {
@@ -44,7 +37,7 @@ export class EmployeeInfoComponent implements OnInit {
 
     const modal = await this.modalController.create({
       component: EmployeeInputPage,
-      componentProps:{
+      componentProps: {
         id: this.employee.id,
         name: this.employee.name,
         familyName: this.employee.familyName,

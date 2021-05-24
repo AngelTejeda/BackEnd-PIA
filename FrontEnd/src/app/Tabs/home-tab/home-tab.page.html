@@ -11,16 +11,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="titulo">
-  <h3>PIA</h3>
-  <h4>Producto Integrador de Aprendizaje</h4>
-</div>
+    <h3>PIA</h3>
+    <h4>Producto Integrador de Aprendizaje</h4>
+  </div>
 
-<div class="informacion">
-  <ion-list lines="none">
-    <ion-item detail color="light" *ngFor="let page of pages" [routerLink]="page.url">
-      <ion-icon [name]="page.icon" class="iconPage"></ion-icon>
-      <ion-label class="menu" color="dark">{{page.title}}</ion-label>
-    </ion-item>
-  </ion-list>
-</div>
+  <div class="informacion">
+    <ion-list lines="none">
+      <ion-item detail color="light" *ngFor="let page of pages" [routerLink]="page.url">
+        <ion-icon [name]="page.icon" class="iconPage"></ion-icon>
+        <ion-label class="menu" color="dark">{{page.title}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
