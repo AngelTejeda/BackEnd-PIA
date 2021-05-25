@@ -104,15 +104,15 @@ export class LoginPage implements OnInit {
         .subscribe(
           // Respuesta válida
           () => {
-            this.emitAlert("Add", 'Successfully Added');
+            this.emitAlert("Registro", 'Registro completado con éxito.');
           },
 
           // Error
           (err) => {
             if (err.status == 409 || err.status == 400)
-              this.emitAlert("Add User", "One or more fields in the provided information infringe a constraint on the Data Base. Failed to Add.");
+              this.emitAlert("Registro", "Se infringieron uno o más campos. No se pudo registrar.");
             else
-              this.emitAlert("Add User", "An unexpected error ocurred while adding the record.");
+              this.emitAlert("Registro", "Ha ocurrido un error inesperado.");
           }
         )
         .add(
