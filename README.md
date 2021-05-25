@@ -86,11 +86,11 @@ Con esto ya podrá interactuar con la Base de Datos Northwind local a través de
 ## Demo de la Aplicación 📽
 En este video puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
 
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://youtu.be/bP1NQVos_lA" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
+<iframe width="560" height="315"
+src="https://youtu.be/bP1NQVos_lA" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 Si el video no se reproduce, puede abrir este [link](https://youtu.be/bP1NQVos_lA).
 
