@@ -1,6 +1,8 @@
 # Employee 👷‍♂️
 El Controlador Employee permite a un usuario autenticado interactuar con la table Employees de la Base de Datos Northwind.
 
+&nbsp;
+
 ## ✔ Get One Employee
 
 **Descripción**: Devuelve un JSON con la información del empleado solicitado.
@@ -30,6 +32,8 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 ![Get One Employee Postman](./pictures/Employee/get_one_employee.png)
 
 ***
+
+&nbsp;
 
 ## ✔ Add Employee
 
@@ -82,6 +86,8 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 
 ***
 
+&nbsp;
+
 ## ✔ Update Employee
 
 **Descripción**: Modifica un registro de la tabla Employees con la información especificada en el Body.
@@ -128,6 +134,8 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 
 ***
 
+&nbsp;
+
 ## ✔ Delete Employee
 
 **Descripción**: Elimina el registro del empleado especificado.
@@ -148,6 +156,8 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 ![Delete Employee Postman](./pictures/Employee/delete_employee.png)
 
 ***
+
+&nbsp;
 
 ## ✔ Get Page
 
@@ -188,7 +198,9 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 
 ***
 
-### ✔ Get All Employees
+&nbsp;
+
+## ✔ Get All Employees
 
 **Descripción**: Devuelve un JSON con todos los registros de la tabla de empleados. Los registros que se muestren dependerán de la página solicitada.
 
@@ -221,5 +233,8 @@ El Controlador Employee permite a un usuario autenticado interactuar con la tabl
 
 ![Get All Employees Postman](./pictures/Employee/get_all_employees.png)
 
+***
 
-# [Volver](../README.md) ⏪
+&nbsp;
+
+## [Volver](../README.md) ⏪

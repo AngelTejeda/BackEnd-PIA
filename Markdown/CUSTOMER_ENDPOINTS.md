@@ -1,6 +1,8 @@
 # Customer 🙍‍♂️
 El Controlador Customer permite a un usuario autenticado interactuar con la tabla Customer de la Base de Datos Northwind.
 
+&nbsp;
+
 ## ✔ Get One Customer
 
 **Descripción**: Devuelve un JSON con la información del cliente solicitado.
@@ -31,6 +33,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 ![Get One Customer Postman](./pictures/Customer/get_one_customer.png)
 
 ***
+
+&nbsp;
 
 ## ✔ Add Customer
 
@@ -97,6 +101,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 
 ***
 
+&nbsp;
+
 ## ✔ Update Customer
 
 **Descripción**: Modifica un registro de la tabla Customer con la información especificada en el Body.
@@ -150,6 +156,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 
 ***
 
+&nbsp;
+
 ## ✔ Delete Customer
 
 **Descripción**: Elimina el registro del cliente especificado.
@@ -170,6 +178,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 ![Delete Customer Postman](./pictures/Customer/delete_customer.png)
 
 ***
+
+&nbsp;
 
 ## ✔ Get Page
 
@@ -211,6 +221,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 
 ***
 
+&nbsp;
+
 ### ✔ Get All Customers
 
 **Descripción**: Devuelve un JSON con todos los registros de la tabla de clientes. Los registros que se muestren dependerán de la página solicitada.
@@ -245,5 +257,8 @@ El Controlador Customer permite a un usuario autenticado interactuar con la tabl
 
 ![Get All Customers Postman](./pictures/Customer/get_all_customers.png)
 
+***
 
-# [Volver](../README.md) ⏪
+&nbsp;
+
+## [Volver](../README.md) ⏪
