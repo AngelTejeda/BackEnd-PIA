@@ -9,12 +9,13 @@ GO
 USE master
 GO
 
-alter database Northwind set single_user with rollback immediate
-alter database Northwind set MULTI_USER
-
-if exists (select * from sysdatabases where name='Northwind')
-		drop database Northwind
-go
+IF EXISTS (SELECT * FROM SYSDATABASES WHERE NAME='Northwind')
+BEGIN
+	ALTER DATABASE Northwind SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+	ALTER DATABASE Northwind SET MULTI_USER
+	DROP DATABASE Northwind
+END
+GO
 
 DECLARE @device_directory NVARCHAR(520)
 SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)
