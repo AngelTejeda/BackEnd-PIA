@@ -3,11 +3,10 @@ En este repositorio se encuentran los archivos correspondientes al PIA de Progra
 
 
 ## Integrantes✒️
-* **José Santos Flores Silva** -  [josflores19](https://github.com/josflores19)
-* **Edson Yael García Fuentes** - [Yael2407](https://github.com/Yael2407)
-* **Sofía Alejandra Gaytán Díaz** - [SouAle](https://github.com/SouAle)
-* **Ángel Tejeda Tiscareño** - [AngelTejeda](https://github.com/AngelTejeda)
-
+* **José Santos Flores Silva**: 1851125 -  [josflores19](https://github.com/josflores19)
+* **Edson Yael García Fuentes**: 1863860 - [Yael2407](https://github.com/Yael2407)
+* **Sofía Alejandra Gaytán Díaz**: 1845533 - [SouAle](https://github.com/SouAle)
+* **Ángel Tejeda Tiscareño**: 1851388 - [AngelTejeda](https://github.com/AngelTejeda)
 
 ## Descarga y Configuración 🔨
 A continuación se muestran los pasos a seguir para obtener una copia del repositorio y echarlo a andar en el localhost de su máquina local.
