@@ -9,10 +9,6 @@ En este repositorio se encuentran los archivos correspondientes al PIA de Progra
 * **Ángel Tejeda Tiscareño** - [AngelTejeda](https://github.com/AngelTejeda)
 
 
-## Proyecto Deployado ☁
-* Si desea probar la Aplicación FrontEnd deployada en Azure, diríjase a este [link]().
-* Si desea realizar peticiones a la API deployada en Azure, diríjase a este [link]().
-
 ## Descarga y Configuración 🔨
 A continuación se muestran los pasos a seguir para obtener una copia del repositorio y echarlo a andar en el localhost de su máquina local.
 
@@ -88,6 +84,42 @@ Cuando el proyecto termine de compilarse se abrirá una nueva pestaña en el nav
 Con esto ya podrá interactuar con la Base de Datos Northwind local a través de la API que es consumida por la aplicación del FrontEnd.
 
 
+## Demo de la Aplicación 📽
+En este [link](https://youtu.be/bP1NQVos_lA) puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
+
+
+## Endpoints de la API 🎯
+La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2 endpoints y 3 controladores que interactúan con tablas de la Base de Datos, los cuales cuentan con 6 endpoints cada uno. Para obtener información más detallada de alguno de los controladores, haga click en el nombre.
+
+### [Login](./Markdown/LOGIN_ENDPOINTS.md) 🔐
+  * GET /api/Login
+  * POST /api/Login
+
+### [Employee](./Markdown/EMPLOYEE_ENDPOINTS.md) 👷‍♂️
+  * GET /api/Employee/{id}
+  * POST /api/Employee
+  * PUT /api/Employee/{id}
+  * DELETE /api/Employee/{id}
+  * GET /api/Employee/pages/{requestedPage}
+  * GET /api/Employee
+
+### [Product](./Markdown/PRODUCT_ENDPOINTS.md) 🛒
+  * GET /api/Product/{id}
+  * POST /api/Product
+  * PUT /api/Product/{id}
+  * DELETE /api/Product/{id}
+  * GET /api/Product/pages/{requestedPage}
+  * GET /api/Product
+
+### [Customer](./Markdown/CUSTOMER_ENDPOINTS.md) 🙍‍♂️
+  * GET /api/Customer/{id}
+  * POST /api/Customer
+  * PUT /api/Customer/{id}
+  * DELETE /api/Customer/{id}
+  * GET /api/Customer/pages/{requestedPage}
+  * GET /api/Customer
+
+
 ## Pruebas de los Endpoints en Postman 📧
 Para probar los endpoints de la API en Postman desde el localhost, importe el archivo `Postman Endpoint Collections.json`. Deberá agregarse una colección con el nombre `BackEnd PIA`.
 
@@ -96,5 +128,3 @@ Dentro de esta carpeta se encontrarán a su vez 4 carpetas, uno para cada contro
 ![Postman Collection](./Markdown/pictures/postman_collection.png)
 
 Para probar los endpoints en Postman primero es necesario ejecutar el POST del controlador Login para generar un usuario. Con los datos ingresados se debe ejecutar el GET del mismo controlador para obtener un token de acceso. Este token se guarda automáticamente en las variables de entorno y se utiliza para mandar llamar al resto de endpoints de la API, por lo que no necesita preocuparse por copiar el token en cada request.
-
-Puede encontrar información más detallada de los endpoints en [este archivo](./Markdown/ENDPOINTS.md).
