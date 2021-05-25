@@ -84,11 +84,7 @@ Con esto ya podrá interactuar con la Base de Datos Northwind local a través de
 
 
 ## Demo de la Aplicación 📽
-En este video puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
-
-<iframe width="1449" height="526" src="https://www.youtube.com/embed/bP1NQVos_lA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-Si el video no se reproduce, puede abrir este [link](https://youtu.be/bP1NQVos_lA).
+En este [link](https://youtu.be/bP1NQVos_lA) puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
 
 ## Endpoints de la API 🎯
 La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2 endpoints y 3 controladores que interactúan con tablas de la Base de Datos, los cuales cuentan con 6 endpoints cada uno. Para obtener información más detallada de alguno de los controladores, haga click en el nombre.
