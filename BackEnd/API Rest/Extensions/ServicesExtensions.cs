@@ -9,7 +9,7 @@ namespace API_Rest.Extensions
     public static class ServicesExtensions
     {
         // ExtensionMethod que agrega autenticación mediante Token JWT.
-        // La autenticación valida el issuer, la audiencia, el tiempo de expiración y la Singing Key del Token.
+        // La autenticación valida el issuer, la audiencia, el tiempo de expiración y la Signing Key del Token.
         public static void AddJwtAuthentication(this IServiceCollection services)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

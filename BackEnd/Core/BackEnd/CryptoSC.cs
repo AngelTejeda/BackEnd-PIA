@@ -50,9 +50,11 @@ namespace Core.BackEnd
         {
             JwtParamethers jwt = new();
 
+            // Se generan credenciales con la clave secreta.
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(jwt.GetSecretKey()));
             SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
+            // Los claims del Token incluyen el nombre de usuario, email y un identificador para el Token.
             Claim[] claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, dbUser.Username),
@@ -60,6 +62,8 @@ namespace Core.BackEnd
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
+            // Se genera un Token con el issuer y audiencia (ambas 'API'), los claimes, una expiración de 2 horas
+            // y las credenciales generadas con la clave secreta.
             JwtSecurityToken securityToken = new(
                 issuer: jwt.GetIssuer(),
                 audience: jwt.GetIssuer(),
@@ -67,7 +71,8 @@ namespace Core.BackEnd
                 expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials
                 );
-
+            
+            // Se convierte el Token en un string.
             string token = new JwtSecurityTokenHandler().WriteToken(securityToken);
 
             return token;
