@@ -85,8 +85,13 @@ Con esto ya podrá interactuar con la Base de Datos Northwind local a través de
 
 
 ## Demo de la Aplicación 📽
-En este [link](https://youtu.be/bP1NQVos_lA) puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
+En este video puede encontrar un video corto del funcionamiento general de la aplicación de FrontEnd.
 
+<figure class="video_container">
+  <iframe src="https://youtu.be/bP1NQVos_lA" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+Si el video no se reproduce, puede abrir este [link](https://youtu.be/bP1NQVos_lA).
 
 ## Endpoints de la API 🎯
 La API cuenta con 4 controladores. Un controlador para el login que cuenta con 2 endpoints y 3 controladores que interactúan con tablas de la Base de Datos, los cuales cuentan con 6 endpoints cada uno. Para obtener información más detallada de alguno de los controladores, haga click en el nombre.
@@ -128,3 +133,12 @@ Dentro de esta carpeta se encontrarán a su vez 4 carpetas, uno para cada contro
 ![Postman Collection](./Markdown/pictures/postman_collection.png)
 
 Para probar los endpoints en Postman primero es necesario ejecutar el POST del controlador Login para generar un usuario. Con los datos ingresados se debe ejecutar el GET del mismo controlador para obtener un token de acceso. Este token se guarda automáticamente en las variables de entorno y se utiliza para mandar llamar al resto de endpoints de la API, por lo que no necesita preocuparse por copiar el token en cada request.
+
+
+# Notas
+* Las operaciones CRUD se aplican en los controladores de la carpeta `BackEnd\API Rest\Controllers`.
+* Los archivos relacionados con la lógica de las operaciones en la Base de Datos se encuentran en la carpeta `BackEnd\Core\BackEnd`.
+* El CORS se aplica en el archivo `BackEnd\API Rest\Startup.cs`.
+* La autenticación mediante JWT se implementa en `BackEnd\API Rest\Extensions\ServicesExtensions.cs`.
+* La lógica para la creación de tokens  JWT se realiza en el archivo `BackEnd\Core\BackEnd\CryptoSC.cs`.
+* En el FrontEnd, el servicio ubicado en `FrontEnd\src\app\Services\http-provider.service.ts` se utiliza para consumir los endpoints de la API en toda la aplicación del FrontEnd.
