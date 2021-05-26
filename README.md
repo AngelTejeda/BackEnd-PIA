@@ -142,7 +142,7 @@ Para probar los endpoints en Postman primero es necesario ejecutar el POST del c
 
 &nbsp;
 
-# Notas
+# Notas 📝
 * Las operaciones CRUD se aplican en los controladores de la carpeta `BackEnd\API Rest\Controllers`.
 * Los archivos relacionados con la lógica de las operaciones en la Base de Datos se encuentran en la carpeta `BackEnd\Core\BackEnd`.
 * El CORS se aplica en el archivo `BackEnd\API Rest\Startup.cs`.
